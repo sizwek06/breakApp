@@ -8,8 +8,8 @@ import UIKit
 
 class BreaksVC: UITableViewController  {
     
-    let breaks: [BreakItem] = [
-        BreakItem(name: "Lunch", breakLength: "60 mins", timeOfDay: "2", reminder: "15", colour: "black"),
+    let breaksArray: [BreakItem] = [
+        BreakItem(name: "Lunch", breakLength: "60", timeOfDay: "2", reminder: "15", colour: "black"),
         BreakItem(name: "Shop", breakLength: "35 mins", timeOfDay: "2", reminder: "15", colour: "black"),
         BreakItem(name: "Coffee", breakLength: "5 mins", timeOfDay: "2", reminder: "15", colour: "black"),
         BreakItem(name: "School Run", breakLength: "45 mins", timeOfDay: "2", reminder: "15", colour: "black")
@@ -26,11 +26,11 @@ class BreaksVC: UITableViewController  {
     
     //MARK: - TableView DataSource
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return breaks.count
+        return breaksArray.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let breakItem = breaks[indexPath.row]
+        let breakItem = breaksArray[indexPath.row]
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "breakItemCell", for: indexPath)
         cell.textLabel?.text = breakItem.name
@@ -38,5 +38,20 @@ class BreaksVC: UITableViewController  {
         //TODO: Need to figure out how this will be stored and returned. Time convertion class?
         
         return cell
+    }
+    
+    //MARK: - Segue with time
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "showBreakItem", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let breakVC = segue.destination as! BreakItemVC
+        _ = breakVC.view
+        //TODO: Ask about this
+        
+        if let indexPath = tableView.indexPathForSelectedRow {
+            breakVC.countDownLabel?.text = breaksArray[indexPath.row].breakLength
+        }
     }
 }
