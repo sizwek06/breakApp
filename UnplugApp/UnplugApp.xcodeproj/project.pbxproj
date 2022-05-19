@@ -15,6 +15,7 @@
 		28A1B96D2834777000057130 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28A1B96C2834777000057130 /* Assets.xcassets */; };
 		28A1B9702834777000057130 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28A1B96E2834777000057130 /* LaunchScreen.storyboard */; };
 		28A1B97A28347AB100057130 /* BreaksVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A1B97928347AB100057130 /* BreaksVC.swift */; };
+		28A1B98328348CDA00057130 /* BreakStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A1B98228348CDA00057130 /* BreakStruct.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		28A1B96F2834777000057130 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		28A1B9712834777000057130 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		28A1B97928347AB100057130 /* BreaksVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreaksVC.swift; sourceTree = "<group>"; };
+		28A1B98228348CDA00057130 /* BreakStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreakStruct.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,17 +62,42 @@
 		28A1B95F2834776C00057130 /* UnplugApp */ = {
 			isa = PBXGroup;
 			children = (
+				28A1B98128348ABD00057130 /* Controller */,
+				28A1B98028348AB600057130 /* View */,
+				28A1B97F28348AAE00057130 /* Model */,
 				28A1B9602834776C00057130 /* AppDelegate.swift */,
 				28A1B9622834776C00057130 /* SceneDelegate.swift */,
-				28A1B9642834776C00057130 /* BreakItemVC.swift */,
-				28A1B9662834776C00057130 /* Main.storyboard */,
 				28A1B96C2834777000057130 /* Assets.xcassets */,
-				28A1B96E2834777000057130 /* LaunchScreen.storyboard */,
 				28A1B9712834777000057130 /* Info.plist */,
-				28A1B9692834776C00057130 /* UnplugApp.xcdatamodeld */,
-				28A1B97928347AB100057130 /* BreaksVC.swift */,
 			);
 			path = UnplugApp;
+			sourceTree = "<group>";
+		};
+		28A1B97F28348AAE00057130 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				28A1B9692834776C00057130 /* UnplugApp.xcdatamodeld */,
+				28A1B98228348CDA00057130 /* BreakStruct.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		28A1B98028348AB600057130 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				28A1B96E2834777000057130 /* LaunchScreen.storyboard */,
+				28A1B9662834776C00057130 /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		28A1B98128348ABD00057130 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				28A1B97928347AB100057130 /* BreaksVC.swift */,
+				28A1B9642834776C00057130 /* BreakItemVC.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -145,6 +172,7 @@
 			files = (
 				28A1B97A28347AB100057130 /* BreaksVC.swift in Sources */,
 				28A1B9652834776C00057130 /* BreakItemVC.swift in Sources */,
+				28A1B98328348CDA00057130 /* BreakStruct.swift in Sources */,
 				28A1B9612834776C00057130 /* AppDelegate.swift in Sources */,
 				28A1B96B2834776C00057130 /* UnplugApp.xcdatamodeld in Sources */,
 				28A1B9632834776C00057130 /* SceneDelegate.swift in Sources */,
