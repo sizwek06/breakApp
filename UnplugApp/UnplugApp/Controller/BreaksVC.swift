@@ -7,8 +7,6 @@
 import UIKit
 
 class BreaksVC: UITableViewController  {
-
-    @IBOutlet weak var noBreaksLabel: UILabel!
     
     let breaks: [BreakItem] = [
         BreakItem(name: "Lunch", breakLength: "60 mins", timeOfDay: "2", reminder: "15", colour: "black"),

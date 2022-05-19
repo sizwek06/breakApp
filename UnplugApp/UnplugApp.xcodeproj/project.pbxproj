@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		287CEE7F2836EA050015E90F /* breakViewCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287CEE7D2836EA050015E90F /* breakViewCellTableViewCell.swift */; };
+		287CEE802836EA050015E90F /* breakViewCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 287CEE7E2836EA050015E90F /* breakViewCellTableViewCell.xib */; };
 		28A1B9612834776C00057130 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A1B9602834776C00057130 /* AppDelegate.swift */; };
 		28A1B9632834776C00057130 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A1B9622834776C00057130 /* SceneDelegate.swift */; };
 		28A1B9652834776C00057130 /* BreakItemVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A1B9642834776C00057130 /* BreakItemVC.swift */; };
@@ -19,6 +21,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		287CEE7D2836EA050015E90F /* breakViewCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = breakViewCellTableViewCell.swift; sourceTree = "<group>"; };
+		287CEE7E2836EA050015E90F /* breakViewCellTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = breakViewCellTableViewCell.xib; sourceTree = "<group>"; };
 		28A1B95D2834776C00057130 /* UnplugApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UnplugApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28A1B9602834776C00057130 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		28A1B9622834776C00057130 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -85,6 +89,7 @@
 		28A1B98028348AB600057130 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				287CEE7E2836EA050015E90F /* breakViewCellTableViewCell.xib */,
 				28A1B96E2834777000057130 /* LaunchScreen.storyboard */,
 				28A1B9662834776C00057130 /* Main.storyboard */,
 			);
@@ -95,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				28A1B97928347AB100057130 /* BreaksVC.swift */,
+				287CEE7D2836EA050015E90F /* breakViewCellTableViewCell.swift */,
 				28A1B9642834776C00057130 /* BreakItemVC.swift */,
 			);
 			path = Controller;
@@ -159,6 +165,7 @@
 			files = (
 				28A1B9702834777000057130 /* LaunchScreen.storyboard in Resources */,
 				28A1B96D2834777000057130 /* Assets.xcassets in Resources */,
+				287CEE802836EA050015E90F /* breakViewCellTableViewCell.xib in Resources */,
 				28A1B9682834776C00057130 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -172,6 +179,7 @@
 			files = (
 				28A1B97A28347AB100057130 /* BreaksVC.swift in Sources */,
 				28A1B9652834776C00057130 /* BreakItemVC.swift in Sources */,
+				287CEE7F2836EA050015E90F /* breakViewCellTableViewCell.swift in Sources */,
 				28A1B98328348CDA00057130 /* BreakStruct.swift in Sources */,
 				28A1B9612834776C00057130 /* AppDelegate.swift in Sources */,
 				28A1B96B2834776C00057130 /* UnplugApp.xcdatamodeld in Sources */,
