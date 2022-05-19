@@ -10,6 +10,8 @@ import UIKit
 class BreakItemVC: UIViewController {
 
     @IBOutlet weak var countDownLabel: UILabel!
+    @IBOutlet weak var startBtn: UIButton!
+    
     var defaultTime: String?
     
     override func viewDidLoad() {
@@ -19,6 +21,7 @@ class BreakItemVC: UIViewController {
     @IBAction func doneBtnClicked(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
+    
     
 }
 

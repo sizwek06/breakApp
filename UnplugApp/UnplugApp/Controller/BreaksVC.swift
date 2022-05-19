@@ -10,9 +10,9 @@ class BreaksVC: UITableViewController  {
     
     let breaksArray: [BreakItem] = [
         BreakItem(name: "Lunch", breakLength: "60", timeOfDay: "2", reminder: "15", colour: "black"),
-        BreakItem(name: "Shop", breakLength: "35 mins", timeOfDay: "2", reminder: "15", colour: "black"),
-        BreakItem(name: "Coffee", breakLength: "5 mins", timeOfDay: "2", reminder: "15", colour: "black"),
-        BreakItem(name: "School Run", breakLength: "45 mins", timeOfDay: "2", reminder: "15", colour: "black")
+        BreakItem(name: "Shop", breakLength: "35", timeOfDay: "2", reminder: "15", colour: "black"),
+        BreakItem(name: "Coffee", breakLength: "5", timeOfDay: "2", reminder: "15", colour: "black"),
+        BreakItem(name: "School Run", breakLength: "45", timeOfDay: "2", reminder: "15", colour: "black")
     ]
     
     override func viewDidLoad() {
@@ -34,7 +34,7 @@ class BreaksVC: UITableViewController  {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "breakItemCell", for: indexPath)
         cell.textLabel?.text = breakItem.name
-        cell.detailTextLabel?.text = breakItem.breakLength
+        cell.detailTextLabel?.text = "\(breakItem.breakLength) mins"
         //TODO: Need to figure out how this will be stored and returned. Time convertion class?
         
         return cell
@@ -51,7 +51,11 @@ class BreaksVC: UITableViewController  {
         //TODO: Ask about this
         
         if let indexPath = tableView.indexPathForSelectedRow {
-            breakVC.countDownLabel?.text = breaksArray[indexPath.row].breakLength
+            if breaksArray[indexPath.row].breakLength.count < 2 {
+            breakVC.countDownLabel?.text = "00:0\(breaksArray[indexPath.row].breakLength):00"
+            }else{
+                breakVC.countDownLabel?.text = "00:\(breaksArray[indexPath.row].breakLength):00"
+            }
         }
     }
 }
