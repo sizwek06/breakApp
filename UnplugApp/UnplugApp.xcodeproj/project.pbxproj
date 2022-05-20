@@ -10,12 +10,12 @@
 		287CEE7F2836EA050015E90F /* BreakItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287CEE7D2836EA050015E90F /* BreakItemCell.swift */; };
 		28A1B9612834776C00057130 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A1B9602834776C00057130 /* AppDelegate.swift */; };
 		28A1B9632834776C00057130 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A1B9622834776C00057130 /* SceneDelegate.swift */; };
-		28A1B9652834776C00057130 /* BreakItemVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A1B9642834776C00057130 /* BreakItemVC.swift */; };
+		28A1B9652834776C00057130 /* BreakItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A1B9642834776C00057130 /* BreakItemViewController.swift */; };
 		28A1B9682834776C00057130 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28A1B9662834776C00057130 /* Main.storyboard */; };
 		28A1B96B2834776C00057130 /* UnplugApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 28A1B9692834776C00057130 /* UnplugApp.xcdatamodeld */; };
 		28A1B96D2834777000057130 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28A1B96C2834777000057130 /* Assets.xcassets */; };
 		28A1B9702834777000057130 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28A1B96E2834777000057130 /* LaunchScreen.storyboard */; };
-		28A1B97A28347AB100057130 /* BreaksVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A1B97928347AB100057130 /* BreaksVC.swift */; };
+		28A1B97A28347AB100057130 /* BreaksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A1B97928347AB100057130 /* BreaksViewController.swift */; };
 		28A1B98328348CDA00057130 /* BreakStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A1B98228348CDA00057130 /* BreakStruct.swift */; };
 		28EB51492837245B00059F79 /* BreakItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28EB5142283722F900059F79 /* BreakItemCell.xib */; };
 /* End PBXBuildFile section */
@@ -25,13 +25,13 @@
 		28A1B95D2834776C00057130 /* UnplugApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UnplugApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28A1B9602834776C00057130 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		28A1B9622834776C00057130 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		28A1B9642834776C00057130 /* BreakItemVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreakItemVC.swift; sourceTree = "<group>"; };
+		28A1B9642834776C00057130 /* BreakItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreakItemViewController.swift; sourceTree = "<group>"; };
 		28A1B9672834776C00057130 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		28A1B96A2834776C00057130 /* UnplugApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UnplugApp.xcdatamodel; sourceTree = "<group>"; };
 		28A1B96C2834777000057130 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		28A1B96F2834777000057130 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		28A1B9712834777000057130 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		28A1B97928347AB100057130 /* BreaksVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreaksVC.swift; sourceTree = "<group>"; };
+		28A1B97928347AB100057130 /* BreaksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreaksViewController.swift; sourceTree = "<group>"; };
 		28A1B98228348CDA00057130 /* BreakStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreakStruct.swift; sourceTree = "<group>"; };
 		28EB5142283722F900059F79 /* BreakItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BreakItemCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -99,9 +99,9 @@
 		28A1B98128348ABD00057130 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				28A1B97928347AB100057130 /* BreaksVC.swift */,
+				28A1B97928347AB100057130 /* BreaksViewController.swift */,
 				287CEE7D2836EA050015E90F /* BreakItemCell.swift */,
-				28A1B9642834776C00057130 /* BreakItemVC.swift */,
+				28A1B9642834776C00057130 /* BreakItemViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -177,8 +177,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				28A1B97A28347AB100057130 /* BreaksVC.swift in Sources */,
-				28A1B9652834776C00057130 /* BreakItemVC.swift in Sources */,
+				28A1B97A28347AB100057130 /* BreaksViewController.swift in Sources */,
+				28A1B9652834776C00057130 /* BreakItemViewController.swift in Sources */,
 				287CEE7F2836EA050015E90F /* BreakItemCell.swift in Sources */,
 				28A1B98328348CDA00057130 /* BreakStruct.swift in Sources */,
 				28A1B9612834776C00057130 /* AppDelegate.swift in Sources */,
