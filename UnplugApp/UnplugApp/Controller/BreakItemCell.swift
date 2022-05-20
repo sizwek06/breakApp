@@ -7,11 +7,16 @@
 
 import UIKit
 
-class breakViewCellTableViewCell: UITableViewCell {
+class BreakItemCell: UITableViewCell {
 
+    @IBOutlet weak var cellView: BreakItemCell!
+    @IBOutlet weak var breakDurationLabel: UILabel!
+    @IBOutlet weak var breakNameLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+       
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

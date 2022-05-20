@@ -19,10 +19,12 @@ class BreaksVC: UITableViewController  {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //        if breaks.count < 1 {
-        //        noBreaksLabel.isEnabled = true
-        //        }
-        //TODO: When the break nib is created, have a default one for no breaks
+        tableView.dataSource = self
+        tableView.rowHeight = 100
+        tableView.register(UINib(nibName: "BreakItemCell", bundle: nil), forCellReuseIdentifier: "breakItemCellId")
+        
+        tableView.layer.cornerRadius = 30
+        tableView.separatorEffect = .none
     }
     
     //MARK: - TableView DataSource
@@ -33,10 +35,12 @@ class BreaksVC: UITableViewController  {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let breakItem = breaksArray[indexPath.row]
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "breakItemCell", for: indexPath)
-        cell.textLabel?.text = breakItem.name
-        cell.detailTextLabel?.text = "\(breakItem.breakLength) mins"
+        let cell = tableView.dequeueReusableCell(withIdentifier: "breakItemCellId", for: indexPath) as! BreakItemCell
+        cell.breakNameLabel?.text = breakItem.name
+        cell.breakDurationLabel?.text = "\(breakItem.breakLength) mins"
         //TODO: Need to figure out how this will be stored and returned. Time convertion class?
+        
+        cell.selectionStyle = .none
         
         return cell
     }
