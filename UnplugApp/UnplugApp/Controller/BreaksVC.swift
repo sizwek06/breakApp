@@ -13,7 +13,7 @@ class BreaksVC: UITableViewController  {
         BreakItem(name: "Shop", breakLength: "35", timeOfDay: "2", reminder: "15", colour: "black"),
         BreakItem(name: "Coffee", breakLength: "5", timeOfDay: "2", reminder: "15", colour: "black"),
         BreakItem(name: "School Run", breakLength: "45", timeOfDay: "2", reminder: "15", colour: "black"),
-        BreakItem(name: "Special Break", breakLength: "5", timeOfDay: "2", reminder: "15", colour: "black")
+        BreakItem(name: "Special Break", breakLength: "1", timeOfDay: "2", reminder: "15", colour: "black")
     ]
     
     override func viewDidLoad() {
