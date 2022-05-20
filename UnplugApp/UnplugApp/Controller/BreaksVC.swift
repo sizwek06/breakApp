@@ -12,15 +12,16 @@ class BreaksVC: UITableViewController  {
         BreakItem(name: "Lunch", breakLength: "60", timeOfDay: "2", reminder: "15", colour: "black"),
         BreakItem(name: "Shop", breakLength: "35", timeOfDay: "2", reminder: "15", colour: "black"),
         BreakItem(name: "Coffee", breakLength: "5", timeOfDay: "2", reminder: "15", colour: "black"),
-        BreakItem(name: "School Run", breakLength: "45", timeOfDay: "2", reminder: "15", colour: "black")
+        BreakItem(name: "School Run", breakLength: "45", timeOfDay: "2", reminder: "15", colour: "black"),
+        BreakItem(name: "Special Break", breakLength: "5", timeOfDay: "2", reminder: "15", colour: "black")
     ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        if breaks.count < 1 {
-//        noBreaksLabel.isEnabled = true
-//        }
+        //        if breaks.count < 1 {
+        //        noBreaksLabel.isEnabled = true
+        //        }
         //TODO: When the break nib is created, have a default one for no breaks
     }
     
@@ -47,15 +48,10 @@ class BreaksVC: UITableViewController  {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let breakVC = segue.destination as! BreakItemVC
-        _ = breakVC.view
-        //TODO: Ask about this
         
         if let indexPath = tableView.indexPathForSelectedRow {
-            if breaksArray[indexPath.row].breakLength.count < 2 {
-            breakVC.countDownLabel?.text = "00:0\(breaksArray[indexPath.row].breakLength):00"
-            }else{
-                breakVC.countDownLabel?.text = "00:\(breaksArray[indexPath.row].breakLength):00"
-            }
+            let breakTime = breaksArray[indexPath.row].breakLength
+            breakVC.defaultTime = breakTime
         }
     }
 }
