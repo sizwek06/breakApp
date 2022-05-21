@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		287CEE7F2836EA050015E90F /* BreakItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287CEE7D2836EA050015E90F /* BreakItemCell.swift */; };
+		288356E928385335004898BB /* QuoteData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288356E828385335004898BB /* QuoteData.swift */; };
+		288356EC283853E5004898BB /* QuoteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288356EB283853E5004898BB /* QuoteManager.swift */; };
+		288356F0283855B4004898BB /* QuoteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288356EF283855B4004898BB /* QuoteModel.swift */; };
+		288356F728386384004898BB /* QuoteManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288356F628386384004898BB /* QuoteManagerDelegate.swift */; };
 		28A1B9612834776C00057130 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A1B9602834776C00057130 /* AppDelegate.swift */; };
 		28A1B9632834776C00057130 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A1B9622834776C00057130 /* SceneDelegate.swift */; };
 		28A1B9652834776C00057130 /* BreakItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A1B9642834776C00057130 /* BreakItemViewController.swift */; };
@@ -22,6 +26,10 @@
 
 /* Begin PBXFileReference section */
 		287CEE7D2836EA050015E90F /* BreakItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreakItemCell.swift; sourceTree = "<group>"; };
+		288356E828385335004898BB /* QuoteData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteData.swift; sourceTree = "<group>"; };
+		288356EB283853E5004898BB /* QuoteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteManager.swift; sourceTree = "<group>"; };
+		288356EF283855B4004898BB /* QuoteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteModel.swift; sourceTree = "<group>"; };
+		288356F628386384004898BB /* QuoteManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteManagerDelegate.swift; sourceTree = "<group>"; };
 		28A1B95D2834776C00057130 /* UnplugApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UnplugApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28A1B9602834776C00057130 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		28A1B9622834776C00057130 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -47,6 +55,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		288356F528386363004898BB /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				288356EB283853E5004898BB /* QuoteManager.swift */,
+				288356F628386384004898BB /* QuoteManagerDelegate.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
 		28A1B9542834776C00057130 = {
 			isa = PBXGroup;
 			children = (
@@ -66,6 +83,7 @@
 		28A1B95F2834776C00057130 /* UnplugApp */ = {
 			isa = PBXGroup;
 			children = (
+				288356F528386363004898BB /* Managers */,
 				28A1B98128348ABD00057130 /* Controller */,
 				28A1B98028348AB600057130 /* View */,
 				28A1B97F28348AAE00057130 /* Model */,
@@ -82,6 +100,8 @@
 			children = (
 				28A1B9692834776C00057130 /* UnplugApp.xcdatamodeld */,
 				28A1B98228348CDA00057130 /* BreakStruct.swift */,
+				288356E828385335004898BB /* QuoteData.swift */,
+				288356EF283855B4004898BB /* QuoteModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -177,10 +197,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				288356F0283855B4004898BB /* QuoteModel.swift in Sources */,
+				288356F728386384004898BB /* QuoteManagerDelegate.swift in Sources */,
 				28A1B97A28347AB100057130 /* BreaksViewController.swift in Sources */,
 				28A1B9652834776C00057130 /* BreakItemViewController.swift in Sources */,
+				288356EC283853E5004898BB /* QuoteManager.swift in Sources */,
 				287CEE7F2836EA050015E90F /* BreakItemCell.swift in Sources */,
 				28A1B98328348CDA00057130 /* BreakStruct.swift in Sources */,
+				288356E928385335004898BB /* QuoteData.swift in Sources */,
 				28A1B9612834776C00057130 /* AppDelegate.swift in Sources */,
 				28A1B96B2834776C00057130 /* UnplugApp.xcdatamodeld in Sources */,
 				28A1B9632834776C00057130 /* SceneDelegate.swift in Sources */,
