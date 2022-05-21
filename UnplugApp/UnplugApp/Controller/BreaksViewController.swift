@@ -49,7 +49,7 @@ extension BreaksViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "breakItemCellId", for: indexPath) as! BreakItemCell
         //TODO: make this into a guard let
         cell.breakNameLabel?.text = breakItem.name
-        cell.breakDurationLabel?.text = "\(breakItem.breakLength) mins"
+        cell.breakDurationLabel?.text = "Time Remaining: \(breakItem.breakLength)"
         //TODO: Need to figure out how this will be stored and returned. Time convertion class?
         
         cell.selectionStyle = .none
@@ -60,7 +60,6 @@ extension BreaksViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "showBreakItem", sender: self)
         currentIndexPath = indexPath
-        print(currentIndexPath)
     }
 }
 

@@ -62,8 +62,8 @@
             filePath = "UnplugApp/Controller/BreaksViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "83"
-            endingLineNumber = "83"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
             landmarkName = "countDownStarted(count:)"
             landmarkType = "7">
          </BreakpointContent>

@@ -13,6 +13,7 @@
 		288356F0283855B4004898BB /* QuoteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288356EF283855B4004898BB /* QuoteModel.swift */; };
 		288356F728386384004898BB /* QuoteManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288356F628386384004898BB /* QuoteManagerDelegate.swift */; };
 		288356FD28387873004898BB /* DeleteBreakController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288356FC28387873004898BB /* DeleteBreakController.swift */; };
+		288357032839A702004898BB /* CountDownDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288357022839A702004898BB /* CountDownDelegate.swift */; };
 		28A1B9612834776C00057130 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A1B9602834776C00057130 /* AppDelegate.swift */; };
 		28A1B9632834776C00057130 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A1B9622834776C00057130 /* SceneDelegate.swift */; };
 		28A1B9652834776C00057130 /* BreakItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A1B9642834776C00057130 /* BreakItemViewController.swift */; };
@@ -32,6 +33,7 @@
 		288356EF283855B4004898BB /* QuoteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteModel.swift; sourceTree = "<group>"; };
 		288356F628386384004898BB /* QuoteManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteManagerDelegate.swift; sourceTree = "<group>"; };
 		288356FC28387873004898BB /* DeleteBreakController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteBreakController.swift; sourceTree = "<group>"; };
+		288357022839A702004898BB /* CountDownDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountDownDelegate.swift; sourceTree = "<group>"; };
 		28A1B95D2834776C00057130 /* UnplugApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UnplugApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28A1B9602834776C00057130 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		28A1B9622834776C00057130 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -62,6 +64,7 @@
 			children = (
 				288356EB283853E5004898BB /* QuoteManager.swift */,
 				288356F628386384004898BB /* QuoteManagerDelegate.swift */,
+				288357022839A702004898BB /* CountDownDelegate.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -203,6 +206,7 @@
 				288356F0283855B4004898BB /* QuoteModel.swift in Sources */,
 				288356F728386384004898BB /* QuoteManagerDelegate.swift in Sources */,
 				288356FD28387873004898BB /* DeleteBreakController.swift in Sources */,
+				288357032839A702004898BB /* CountDownDelegate.swift in Sources */,
 				28A1B97A28347AB100057130 /* BreaksViewController.swift in Sources */,
 				28A1B9652834776C00057130 /* BreakItemViewController.swift in Sources */,
 				288356EC283853E5004898BB /* QuoteManager.swift in Sources */,

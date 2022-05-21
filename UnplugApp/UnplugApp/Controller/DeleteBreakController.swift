@@ -10,8 +10,10 @@ import UIKit
 
 class DeleteBreakController: UIAlertController  {
     
-    func showDeleteAlert() -> UIAlertController {
-        let deleteAlert = UIAlertController(title: "Delete the break?", message: "Are you sure you'd like to Delete the break?", preferredStyle: .alert)
+    var breakName: String?
+    
+    func showDeleteAlert(_ breakName: String) -> UIAlertController {
+        let deleteAlert = UIAlertController(title: "Delete \(breakName)?", message: "Are you sure you'd like to delete \(breakName)?", preferredStyle: .alert)
         
         let cancelAlertAction = UIAlertAction(title: "Cancel", style: .cancel) { (cancelAlertAction) in
             deleteAlert.dismiss(animated: true, completion: nil)

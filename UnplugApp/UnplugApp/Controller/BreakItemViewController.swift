@@ -7,10 +7,6 @@
 
 import UIKit
 
-protocol CountDownBeganDelegate: AnyObject {
-    func countDownStarted(count: String)
-}
-
 class BreakItemViewController: UIViewController {
     
     var quoteManager = QuoteManager()
@@ -81,7 +77,7 @@ class BreakItemViewController: UIViewController {
     }
     
     @IBAction func deleteButtonClicked(_ sender: UIButton) {
-        present(deleteAlert.showDeleteAlert(), animated: true, completion: nil)
+        present(deleteAlert.showDeleteAlert(breakName!), animated: true, completion: nil)
     }
 }
 
