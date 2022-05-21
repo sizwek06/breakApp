@@ -88,7 +88,7 @@
                                             <action selector="deleteButtonClicked:" destination="R0z-vl-g7F" eventType="touchUpInside" id="6Cd-4b-9Rv"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="..." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U7J-oh-VEg">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U7J-oh-VEg">
                                         <rect key="frame" x="31" y="231" width="337" height="200"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="200" id="LIR-mW-bRQ"/>
@@ -132,19 +132,27 @@
                                             <action selector="doneBtnClicked:" destination="R0z-vl-g7F" eventType="touchUpInside" id="yqx-bW-waA"/>
                                         </connections>
                                     </button>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="xW8-rR-47z">
+                                        <rect key="frame" x="189" y="321" width="20" height="20"/>
+                                        <color key="color" systemColor="systemOrangeColor"/>
+                                    </activityIndicatorView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="xW8-rR-47z" secondAttribute="trailing" constant="167" id="59q-6N-oV3"/>
                                     <constraint firstItem="U7J-oh-VEg" firstAttribute="top" secondItem="u9O-iB-xy5" secondAttribute="bottom" constant="25" id="62S-Ye-LMi"/>
                                     <constraint firstItem="I5g-s7-M4M" firstAttribute="top" secondItem="U7J-oh-VEg" secondAttribute="bottom" constant="83" id="6PU-Uc-bcN"/>
                                     <constraint firstItem="762-2p-1rC" firstAttribute="top" secondItem="GkD-Oz-SKg" secondAttribute="top" id="BmU-3O-VzV"/>
                                     <constraint firstItem="u9O-iB-xy5" firstAttribute="top" secondItem="cxz-kP-YIw" secondAttribute="top" constant="131" id="EvQ-6Z-XgM"/>
                                     <constraint firstItem="762-2p-1rC" firstAttribute="firstBaseline" secondItem="GkD-Oz-SKg" secondAttribute="firstBaseline" id="GVb-ed-x8N"/>
                                     <constraint firstAttribute="trailing" secondItem="GkD-Oz-SKg" secondAttribute="trailing" constant="-36" id="J8D-tg-ugP"/>
+                                    <constraint firstItem="I5g-s7-M4M" firstAttribute="top" secondItem="xW8-rR-47z" secondAttribute="bottom" constant="173" id="RUR-Xi-cgn"/>
                                     <constraint firstAttribute="trailing" secondItem="I5g-s7-M4M" secondAttribute="trailing" constant="-2" id="VaV-HN-QHb"/>
                                     <constraint firstItem="762-2p-1rC" firstAttribute="leading" secondItem="cxz-kP-YIw" secondAttribute="leadingMargin" id="aDn-qf-MF2"/>
                                     <constraint firstItem="u9O-iB-xy5" firstAttribute="centerX" secondItem="I5g-s7-M4M" secondAttribute="centerX" constant="-15" id="cHx-yq-oiX"/>
                                     <constraint firstItem="U7J-oh-VEg" firstAttribute="centerX" secondItem="cxz-kP-YIw" secondAttribute="centerX" constant="11.5" id="dkq-2x-msn"/>
+                                    <constraint firstItem="xW8-rR-47z" firstAttribute="top" secondItem="u9O-iB-xy5" secondAttribute="bottom" constant="115" id="eGu-IK-Shp"/>
+                                    <constraint firstItem="xW8-rR-47z" firstAttribute="leading" secondItem="cxz-kP-YIw" secondAttribute="leading" constant="189" id="iI1-pX-PbS"/>
                                     <constraint firstItem="762-2p-1rC" firstAttribute="baseline" secondItem="GkD-Oz-SKg" secondAttribute="baseline" id="kDG-Tk-0MN"/>
                                     <constraint firstItem="U7J-oh-VEg" firstAttribute="leading" secondItem="cxz-kP-YIw" secondAttribute="leading" constant="31" id="mqi-Ah-88A"/>
                                     <constraint firstItem="I5g-s7-M4M" firstAttribute="leading" secondItem="cxz-kP-YIw" secondAttribute="leading" constant="37" id="mrx-4I-ds6"/>
@@ -177,6 +185,7 @@
                         <outlet property="countDownLabel" destination="u9O-iB-xy5" id="dU8-3i-Fuh"/>
                         <outlet property="currentBreakLabel" destination="vfk-rP-fSS" id="KcJ-bK-CYf"/>
                         <outlet property="quoteLabel" destination="U7J-oh-VEg" id="eQg-PM-Zr5"/>
+                        <outlet property="quoteLoadingActivityIndicator" destination="xW8-rR-47z" id="jBF-Ct-VSW"/>
                         <outlet property="startButton" destination="I5g-s7-M4M" id="Qa6-xw-tux"/>
                     </connections>
                 </viewController>

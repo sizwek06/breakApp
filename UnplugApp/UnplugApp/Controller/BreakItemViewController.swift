@@ -22,6 +22,8 @@ class BreakItemViewController: UIViewController {
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var quoteLabel: UILabel!
     
+    @IBOutlet weak var quoteLoadingActivityIndicator: UIActivityIndicatorView!
+    
     var timer = Timer()
     var secondsPassed = 0
     var defaultTime: Int?
@@ -30,6 +32,7 @@ class BreakItemViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        quoteLoadingActivityIndicator.startAnimating()
         startButton.layer.cornerRadius = 20
         
         if let breakTime = defaultTime {
@@ -86,7 +89,7 @@ class BreakItemViewController: UIViewController {
 extension BreakItemViewController: QuoteManagerDelegate {
     func didUpdateCurrentQuote(_ quoteManager: QuoteManager, quoteModel: QuoteModel) {
         self.quoteLabel.text = "\(quoteModel.text) \n\n~ \(quoteModel.author ?? "Unknown") ~"
-        //TODO: REMOVE: Print is for testing purposes - quoteLabel word wrap
+        quoteLoadingActivityIndicator.isHidden = true
     }
     
     func didFailWithError(error: Error) {

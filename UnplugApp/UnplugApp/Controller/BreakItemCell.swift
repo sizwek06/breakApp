@@ -23,8 +23,10 @@ class BreakItemCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func configureCell(with timeLeft: BreakItem) {
-        breakDurationLabel.text = "\(timeLeft.breakLength)"
+    func configureCell(with currentIndex: IndexPath) {
+        breakDurationLabel.font = UIFont.boldSystemFont(ofSize: 15)
+        cellView.layer.borderWidth = 2
+        cellView.layer.borderColor = UIColor.black.cgColor
     }
     
 }

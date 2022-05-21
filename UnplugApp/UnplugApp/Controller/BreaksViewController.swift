@@ -53,7 +53,7 @@ extension BreaksViewController {
         //TODO: Need to figure out how this will be stored and returned. Time convertion class?
         
         cell.selectionStyle = .none
-        
+        cell.configureCell(with: indexPath)
         return cell
     }
     
@@ -81,12 +81,12 @@ extension BreaksViewController {
 extension BreaksViewController: CountDownBeganDelegate {
     
     func countDownStarted(count: String) {
-        testLabel.text = count
         self.currentCount = count
+        //TODO: Update the cell
         
         breaksArray[currentIndexPath.row].breakLength = count
+        
         //TODO: highlight the current cell?
-        //TODO: Update the cell 
         tableView.reloadData()
     }
 }
