@@ -25,7 +25,7 @@ class BreakItemViewController: UIViewController {
         startButton.layer.cornerRadius = 20
         
         if let breakTime = defaultTime {
-            self.secondsPassed = breakTime * 60
+            self.secondsPassed = breakTime * 10
             updateCountdown(secondsPassed)
         }
         
@@ -39,6 +39,7 @@ class BreakItemViewController: UIViewController {
             updateCountdown(secondsPassed)
         } else {
             timer.invalidate()
+            updateButtonTitle("START")
             //TODO: Add a message once the break is over
         }
     }
@@ -47,14 +48,25 @@ class BreakItemViewController: UIViewController {
         countDownLabel?.text = String(format: "%02d:%02d:%02d", 0, timeLeft / 60, timeLeft % 60)
     }
     
+    func updateButtonTitle(_ currentTitle: String) {
+        startButton.setTitle(currentTitle, for: .normal)
+    }
+    
     @IBAction func doneBtnClicked(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
         timer.invalidate()
     }
     
-    @IBAction func startBtnClicked(_ sender: Any) {
-        timer.invalidate()
-        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
+    @IBAction func startBtnClicked(_ sender: UIButton) {
+        if let buttonTitle = sender.title(for: .normal) {
+            if buttonTitle == "STOP" {
+                timer.invalidate()
+                updateButtonTitle("START")
+            } else if buttonTitle == "START" {
+                updateButtonTitle("STOP")
+                timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
+            }
+        }
     }
 }
 
@@ -63,6 +75,7 @@ extension BreakItemViewController: QuoteManagerDelegate {
     func didUpdateCurrentQuote(_ quoteManager: QuoteManager, quoteModel: QuoteModel) {
         self.quoteLabel.text = "\(quoteModel.text) \n\n\(quoteModel.author ?? "~")"
         print("\(quoteModel.text) \n \(quoteModel.author ?? "~")")
+        //TODO: REMOVE: Print is for testing purposes - quoteLabel word wrap
     }
     
     func didFailWithError(error: Error) {

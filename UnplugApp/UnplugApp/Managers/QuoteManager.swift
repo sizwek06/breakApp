@@ -41,6 +41,8 @@ struct QuoteManager {
         do {
             let decodedData = try decoder.decode([QuoteData].self, from: quoteData)
             let randomQuoteIndex = Int.random(in: 0..<decodedData.count)
+            print("Array num: \(randomQuoteIndex)")
+            //TODO: REMOVE: Print is for testing purposes - quoteLabel word wrap
             let text = decodedData[randomQuoteIndex].text
             let author = decodedData[randomQuoteIndex].author
             
