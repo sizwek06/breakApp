@@ -92,12 +92,12 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                         <state key="normal" title="Delete"/>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quote Goes Here" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U7J-oh-VEg">
-                                        <rect key="frame" x="76" y="229" width="233" height="75"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U7J-oh-VEg">
+                                        <rect key="frame" x="31" y="229" width="351" height="135"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="75" id="Oph-B7-bH5"/>
+                                            <constraint firstAttribute="height" constant="135" id="Oph-B7-bH5"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -129,13 +129,13 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="762-2p-1rC" firstAttribute="top" secondItem="GkD-Oz-SKg" secondAttribute="top" id="3oh-VS-kmZ"/>
-                                    <constraint firstItem="U7J-oh-VEg" firstAttribute="centerX" secondItem="I5g-s7-M4M" secondAttribute="centerX" constant="-14" id="8aV-XZ-nVC"/>
+                                    <constraint firstItem="U7J-oh-VEg" firstAttribute="centerX" secondItem="I5g-s7-M4M" secondAttribute="centerX" id="8aV-XZ-nVC"/>
                                     <constraint firstAttribute="trailing" secondItem="GkD-Oz-SKg" secondAttribute="trailing" id="EMA-MF-zo9"/>
                                     <constraint firstItem="I5g-s7-M4M" firstAttribute="leading" secondItem="cxz-kP-YIw" secondAttribute="leading" constant="17" id="ElJ-05-rEy"/>
                                     <constraint firstItem="U7J-oh-VEg" firstAttribute="top" secondItem="u9O-iB-xy5" secondAttribute="bottom" constant="28" id="Etx-Zg-4Cf"/>
                                     <constraint firstAttribute="bottom" secondItem="I5g-s7-M4M" secondAttribute="bottom" constant="140" id="Hdi-Yt-jDH"/>
                                     <constraint firstAttribute="trailing" secondItem="I5g-s7-M4M" secondAttribute="trailing" constant="18" id="Js4-Ql-8l2"/>
-                                    <constraint firstItem="U7J-oh-VEg" firstAttribute="leading" secondItem="cxz-kP-YIw" secondAttribute="leading" constant="76" id="KcS-p6-bG3"/>
+                                    <constraint firstItem="U7J-oh-VEg" firstAttribute="leading" secondItem="cxz-kP-YIw" secondAttribute="leading" constant="31" id="KcS-p6-bG3"/>
                                     <constraint firstItem="762-2p-1rC" firstAttribute="leading" secondItem="cxz-kP-YIw" secondAttribute="leadingMargin" id="LoV-xC-FPx"/>
                                     <constraint firstItem="GkD-Oz-SKg" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="762-2p-1rC" secondAttribute="trailing" constant="8" symbolic="YES" id="Ngb-XU-6uG"/>
                                     <constraint firstAttribute="trailing" secondItem="u9O-iB-xy5" secondAttribute="trailing" constant="94" id="cog-vg-G8M"/>
@@ -159,6 +159,7 @@
                     <modalFormSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="countDownLabel" destination="u9O-iB-xy5" id="dU8-3i-Fuh"/>
+                        <outlet property="quoteLabel" destination="U7J-oh-VEg" id="eQg-PM-Zr5"/>
                         <outlet property="startButton" destination="I5g-s7-M4M" id="Qa6-xw-tux"/>
                     </connections>
                 </viewController>

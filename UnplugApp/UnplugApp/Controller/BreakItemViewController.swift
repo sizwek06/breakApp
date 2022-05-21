@@ -9,8 +9,11 @@ import UIKit
 
 class BreakItemViewController: UIViewController {
     
+    var quoteManager = QuoteManager()
+    
     @IBOutlet weak var countDownLabel: UILabel!
     @IBOutlet weak var startButton: UIButton!
+    @IBOutlet weak var quoteLabel: UILabel!
     
     var timer = Timer()
     var secondsPassed = 0
@@ -22,9 +25,12 @@ class BreakItemViewController: UIViewController {
         startButton.layer.cornerRadius = 20
         
         if let breakTime = defaultTime {
-            self.secondsPassed = breakTime * 10
+            self.secondsPassed = breakTime * 60
             updateCountdown(secondsPassed)
         }
+        
+        quoteManager.delegate = self
+        quoteManager.getQuote()
     }
     
     @objc func updateTimer() {
@@ -52,3 +58,14 @@ class BreakItemViewController: UIViewController {
     }
 }
 
+//MARK: - QuoteManagerDelegate
+extension BreakItemViewController: QuoteManagerDelegate {
+    func didUpdateCurrentQuote(_ quoteManager: QuoteManager, quoteModel: QuoteModel) {
+        self.quoteLabel.text = "\(quoteModel.text) \n\n\(quoteModel.author ?? "~")"
+        print("\(quoteModel.text) \n \(quoteModel.author ?? "~")")
+    }
+    
+    func didFailWithError(error: Error) {
+        print(error)
+    }
+}
