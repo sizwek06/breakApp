@@ -8,25 +8,33 @@ import UIKit
 
 class BreaksViewController: UITableViewController  {
     
-    let breaksArray: [BreakItem] = [
-        BreakItem(name: "Lunch", breakLength: 60, timeOfDay: "2", reminder: "15", colour: "black"),
-        BreakItem(name: "Shop", breakLength: 35, timeOfDay: "2", reminder: "15", colour: "black"),
-        BreakItem(name: "Coffee", breakLength: 5, timeOfDay: "2", reminder: "15", colour: "black"),
-        BreakItem(name: "School Run", breakLength: 45, timeOfDay: "2", reminder: "15", colour: "black"),
-        BreakItem(name: "Special Break", breakLength: 1, timeOfDay: "2", reminder: "15", colour: "black")
+    @IBOutlet weak var testLabel: UILabel!
+    
+    var currentCount: String?
+    
+    weak var delegate: CountDownBeganDelegate? = nil
+    var currentIndexPath = IndexPath()
+    
+     var breaksArray: [BreakItem] = [
+        BreakItem(name: "Lunch", breakLength: "60", timeOfDay: "2", reminder: "15", colour: "black"),
+        BreakItem(name: "Shop", breakLength: "35", timeOfDay: "2", reminder: "15", colour: "black"),
+        BreakItem(name: "Coffee", breakLength: "5", timeOfDay: "2", reminder: "15", colour: "black"),
+        BreakItem(name: "School Run", breakLength: "45", timeOfDay: "2", reminder: "15", colour: "black"),
+        BreakItem(name: "Special Break", breakLength: "1", timeOfDay: "2", reminder: "15", colour: "black")
     ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         tableView.dataSource = self
         tableView.rowHeight = 100
         tableView.register(UINib(nibName: "BreakItemCell", bundle: nil), forCellReuseIdentifier: "breakItemCellId")
         
         tableView.layer.cornerRadius = 30
         tableView.separatorEffect = .none
+        delegate = self
+        
+        tableView.reloadData()
     }
-    
 }
 
 //MARK: - TableView DataSource
@@ -51,17 +59,34 @@ extension BreaksViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "showBreakItem", sender: self)
+        currentIndexPath = indexPath
+        print(currentIndexPath)
     }
 }
 
 //MARK: - Segue with time
 extension BreaksViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let breakVC = segue.destination as! BreakItemViewController
+        let breaksViewController = segue.destination as! BreakItemViewController
+        breaksViewController.countDownDelegate = self
         //TODO: make this into a guard let
         if let indexPath = tableView.indexPathForSelectedRow {
-            breakVC.defaultTime = breaksArray[indexPath.row].breakLength
-            breakVC.breakName = breaksArray[indexPath.row].name
+            breaksViewController.defaultTime = Int(breaksArray[indexPath.row].breakLength)
+            breaksViewController.breakName = breaksArray[indexPath.row].name
         }
+    }
+}
+
+//MARK: BreakItemViewController - DataEnteredDelegate
+extension BreaksViewController: CountDownBeganDelegate {
+    
+    func countDownStarted(count: String) {
+        testLabel.text = count
+        self.currentCount = count
+        
+        breaksArray[currentIndexPath.row].breakLength = count
+        //TODO: highlight the current cell?
+        //TODO: Update the cell 
+        tableView.reloadData()
     }
 }

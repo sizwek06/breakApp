@@ -7,10 +7,15 @@
 
 import UIKit
 
+protocol CountDownBeganDelegate: AnyObject {
+    func countDownStarted(count: String)
+}
+
 class BreakItemViewController: UIViewController {
     
     var quoteManager = QuoteManager()
     let deleteAlert = DeleteBreakController()
+    var countDownDelegate: CountDownBeganDelegate? = nil
     
     @IBOutlet weak var currentBreakLabel: UILabel!
     @IBOutlet weak var countDownLabel: UILabel!
@@ -28,8 +33,8 @@ class BreakItemViewController: UIViewController {
         startButton.layer.cornerRadius = 20
         
         if let breakTime = defaultTime {
-            self.secondsPassed = breakTime * 10
-            updateCountdown(secondsPassed)
+            self.secondsPassed = breakTime * 60
+            countDownLabel?.text = updateCountdown(secondsPassed)
         }
         currentBreakLabel?.text = breakName
         quoteManager.delegate = self
@@ -39,7 +44,8 @@ class BreakItemViewController: UIViewController {
     @objc func updateTimer() {
         if secondsPassed != 0 {
             secondsPassed -= 1
-            updateCountdown(secondsPassed)
+            countDownLabel?.text = updateCountdown(secondsPassed)
+            countDownDelegate?.countDownStarted(count: updateCountdown(secondsPassed))
         } else {
             timer.invalidate()
             updateButtonTitle("START")
@@ -47,8 +53,8 @@ class BreakItemViewController: UIViewController {
         }
     }
     
-    func updateCountdown(_ timeLeft: Int) {
-        countDownLabel?.text = String(format: "%02d:%02d:%02d", 0, timeLeft / 60, timeLeft % 60)
+    func updateCountdown(_ timeLeft: Int) -> String{
+        return String(format: "%02d:%02d:%02d", 0, timeLeft / 60, timeLeft % 60)
     }
     
     func updateButtonTitle(_ currentTitle: String) {
@@ -56,8 +62,6 @@ class BreakItemViewController: UIViewController {
     }
     
     @IBAction func doneBtnClicked(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
-        timer.invalidate()
     }
     
     @IBAction func startBtnClicked(_ sender: UIButton) {
@@ -65,6 +69,7 @@ class BreakItemViewController: UIViewController {
             if buttonTitle == "STOP" {
                 timer.invalidate()
                 updateButtonTitle("START")
+                countDownDelegate?.countDownStarted(count: "\(defaultTime!) min(s)")
             } else if buttonTitle == "START" {
                 updateButtonTitle("STOP")
                 timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
@@ -75,14 +80,12 @@ class BreakItemViewController: UIViewController {
     @IBAction func deleteButtonClicked(_ sender: UIButton) {
         present(deleteAlert.showDeleteAlert(), animated: true, completion: nil)
     }
-    
 }
 
-//MARK: - QuoteManagerDelegate
+//MARK: BreakItemViewController - QuoteManagerDelegate
 extension BreakItemViewController: QuoteManagerDelegate {
     func didUpdateCurrentQuote(_ quoteManager: QuoteManager, quoteModel: QuoteModel) {
-        self.quoteLabel.text = "\(quoteModel.text) \n\n\(quoteModel.author ?? "~")"
-        print("\(quoteModel.text) \n \(quoteModel.author ?? "~")")
+        self.quoteLabel.text = "\(quoteModel.text) \n\n~ \(quoteModel.author ?? "Unknown") ~"
         //TODO: REMOVE: Print is for testing purposes - quoteLabel word wrap
     }
     
