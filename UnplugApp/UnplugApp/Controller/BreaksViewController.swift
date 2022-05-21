@@ -61,6 +61,7 @@ extension BreaksViewController {
         //TODO: make this into a guard let
         if let indexPath = tableView.indexPathForSelectedRow {
             breakVC.defaultTime = breaksArray[indexPath.row].breakLength
+            breakVC.breakName = breaksArray[indexPath.row].name
         }
     }
 }

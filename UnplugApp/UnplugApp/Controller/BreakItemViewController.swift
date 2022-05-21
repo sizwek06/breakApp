@@ -12,6 +12,7 @@ class BreakItemViewController: UIViewController {
     var quoteManager = QuoteManager()
     let deleteAlert = DeleteBreakController()
     
+    @IBOutlet weak var currentBreakLabel: UILabel!
     @IBOutlet weak var countDownLabel: UILabel!
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var quoteLabel: UILabel!
@@ -19,6 +20,7 @@ class BreakItemViewController: UIViewController {
     var timer = Timer()
     var secondsPassed = 0
     var defaultTime: Int?
+    var breakName: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +31,7 @@ class BreakItemViewController: UIViewController {
             self.secondsPassed = breakTime * 10
             updateCountdown(secondsPassed)
         }
-        
+        currentBreakLabel?.text = breakName
         quoteManager.delegate = self
         quoteManager.getQuote()
     }
