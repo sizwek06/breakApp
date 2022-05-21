@@ -10,6 +10,7 @@ import UIKit
 class BreakItemViewController: UIViewController {
     
     var quoteManager = QuoteManager()
+    let deleteAlert = DeleteBreakController()
     
     @IBOutlet weak var countDownLabel: UILabel!
     @IBOutlet weak var startButton: UIButton!
@@ -68,6 +69,11 @@ class BreakItemViewController: UIViewController {
             }
         }
     }
+    
+    @IBAction func deleteButtonClicked(_ sender: UIButton) {
+        present(deleteAlert.showDeleteAlert(), animated: true, completion: nil)
+    }
+    
 }
 
 //MARK: - QuoteManagerDelegate
