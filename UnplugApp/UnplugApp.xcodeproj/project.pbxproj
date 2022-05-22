@@ -14,6 +14,7 @@
 		288356F728386384004898BB /* QuoteManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288356F628386384004898BB /* QuoteManagerDelegate.swift */; };
 		288356FD28387873004898BB /* DeleteBreakController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288356FC28387873004898BB /* DeleteBreakController.swift */; };
 		288357032839A702004898BB /* CountDownDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288357022839A702004898BB /* CountDownDelegate.swift */; };
+		2883570B2839B5EF004898BB /* AddBreakViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2883570A2839B5EF004898BB /* AddBreakViewController.swift */; };
 		28A1B9612834776C00057130 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A1B9602834776C00057130 /* AppDelegate.swift */; };
 		28A1B9632834776C00057130 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A1B9622834776C00057130 /* SceneDelegate.swift */; };
 		28A1B9652834776C00057130 /* BreakItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A1B9642834776C00057130 /* BreakItemViewController.swift */; };
@@ -34,6 +35,7 @@
 		288356F628386384004898BB /* QuoteManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteManagerDelegate.swift; sourceTree = "<group>"; };
 		288356FC28387873004898BB /* DeleteBreakController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteBreakController.swift; sourceTree = "<group>"; };
 		288357022839A702004898BB /* CountDownDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountDownDelegate.swift; sourceTree = "<group>"; };
+		2883570A2839B5EF004898BB /* AddBreakViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBreakViewController.swift; sourceTree = "<group>"; };
 		28A1B95D2834776C00057130 /* UnplugApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UnplugApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28A1B9602834776C00057130 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		28A1B9622834776C00057130 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 				287CEE7D2836EA050015E90F /* BreakItemCell.swift */,
 				28A1B9642834776C00057130 /* BreakItemViewController.swift */,
 				288356FC28387873004898BB /* DeleteBreakController.swift */,
+				2883570A2839B5EF004898BB /* AddBreakViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -215,6 +218,7 @@
 				288356E928385335004898BB /* QuoteData.swift in Sources */,
 				28A1B9612834776C00057130 /* AppDelegate.swift in Sources */,
 				28A1B96B2834776C00057130 /* UnplugApp.xcdatamodeld in Sources */,
+				2883570B2839B5EF004898BB /* AddBreakViewController.swift in Sources */,
 				28A1B9632834776C00057130 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -363,13 +367,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = QC2LRL9F42;
+				DEVELOPMENT_TEAM = 4W3WWQNA54;
 				INFOPLIST_FILE = UnplugApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.swifty.UnplugApp;
+				PRODUCT_BUNDLE_IDENTIFIER = co.za.idnight.UnplugApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -382,13 +386,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = QC2LRL9F42;
+				DEVELOPMENT_TEAM = 4W3WWQNA54;
 				INFOPLIST_FILE = UnplugApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.swifty.UnplugApp;
+				PRODUCT_BUNDLE_IDENTIFIER = co.za.idnight.UnplugApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

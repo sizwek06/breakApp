@@ -8,8 +8,6 @@ import UIKit
 
 class BreaksViewController: UITableViewController  {
     
-    @IBOutlet weak var testLabel: UILabel!
-    
     var currentCount: String?
     
     weak var delegate: CountDownBeganDelegate? = nil
@@ -35,6 +33,11 @@ class BreaksViewController: UITableViewController  {
         
         tableView.reloadData()
     }
+    
+    @IBAction func addBreakItem(_ sender: Any) {
+        performSegue(withIdentifier: "addBreakSegue", sender: self)
+    }
+    
 }
 
 //MARK: - TableView DataSource
@@ -66,12 +69,20 @@ extension BreaksViewController {
 //MARK: - Segue with time
 extension BreaksViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "showBreakItem" {
         let breaksViewController = segue.destination as! BreakItemViewController
         breaksViewController.countDownDelegate = self
         //TODO: make this into a guard let
         if let indexPath = tableView.indexPathForSelectedRow {
             breaksViewController.defaultTime = Int(breaksArray[indexPath.row].breakLength)
             breaksViewController.breakName = breaksArray[indexPath.row].name
+        }
+        }
+        
+        if segue.identifier == "addBreakSegue" {
+            _ = segue.destination as! AddBreakViewController
+            shouldPerformSegue(withIdentifier: "addBreakSegue", sender: Any?.self)
         }
     }
 }
