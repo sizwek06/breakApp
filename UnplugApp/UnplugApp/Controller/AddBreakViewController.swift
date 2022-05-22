@@ -12,14 +12,22 @@ class AddBreakViewController: UIViewController {
     @IBOutlet weak var minsSegmentOutlet: UISegmentedControl!
     @IBOutlet weak var breakNameTextField: UITextField!
     
+    var defaultTime: Int?
+    var breakName: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.breakNameTextField.delegate = self
         
+        breakNameTextField.text = breakName
+        
         NotificationCenter.default.addObserver(self, selector: #selector(AddBreakViewController.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
     }
-    
+}
+
+//MARK: - View Manipulation
+extension AddBreakViewController {
     override func viewDidLayoutSubviews() {
         if #available(iOS 15.0 , *) {
             
@@ -41,7 +49,7 @@ class AddBreakViewController: UIViewController {
     @objc func keyboardWillHide(notification: NSNotification) {
         self.view.frame.origin.y += 120
     }
-
+    
     @IBAction func cancelButtonClicked(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }

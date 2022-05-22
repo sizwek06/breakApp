@@ -13,6 +13,7 @@ class BreakItemViewController: UIViewController {
     let deleteAlert = DeleteBreakController()
     var countDownDelegate: CountDownBeganDelegate? = nil
     
+    @IBOutlet weak var deleBarButton: UIBarButtonItem!
     @IBOutlet weak var currentBreakLabel: UILabel!
     @IBOutlet weak var countDownLabel: UILabel!
     @IBOutlet weak var startButton: UIButton!
@@ -76,7 +77,10 @@ class BreakItemViewController: UIViewController {
         }
     }
     
-    @IBAction func deleteButtonClicked(_ sender: UIButton) {
+    @IBAction func editButtonClicked(_ sender: Any) {
+    }
+    
+    @IBAction func deleteBarButtonClicked(_ sender: Any) {
         present(deleteAlert.showDeleteAlert(breakName!), animated: true, completion: nil)
     }
 }
@@ -90,5 +94,18 @@ extension BreakItemViewController: QuoteManagerDelegate {
     
     func didFailWithError(error: Error) {
         print(error)
+    }
+}
+
+extension BreakItemViewController {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "editButtonSegue" {
+            let editbreaksViewController = segue.destination as! AddBreakViewController
+            //TODO: make this into a guard let
+            
+            editbreaksViewController.defaultTime = self.defaultTime
+            editbreaksViewController.breakName = self.breakName
+        }
     }
 }
