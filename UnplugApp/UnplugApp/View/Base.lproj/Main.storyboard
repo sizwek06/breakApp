@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="iZY-2P-3hu">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Image references" minToolsVersion="12.0"/>
@@ -15,7 +15,7 @@
             <objects>
                 <tableViewController title="Unplug" id="MtZ-Zm-Vnk" customClass="BreaksViewController" customModule="UnplugApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="bhY-vV-LcM">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <color key="separatorColor" red="0.98039215686274506" green="0.94117647058823528" blue="0.84313725490196079" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -70,11 +70,11 @@
             <objects>
                 <viewController title="Unplug" id="R0z-vl-g7F" customClass="BreakItemViewController" customModule="UnplugApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="omM-Ax-C7H">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cxz-kP-YIw">
-                                <rect key="frame" x="0.0" y="0.0" width="376" height="714"/>
+                                <rect key="frame" x="0.0" y="0.0" width="376" height="622"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U7J-oh-VEg">
                                         <rect key="frame" x="31" y="231" width="337" height="200"/>
@@ -174,6 +174,8 @@
                     <connections>
                         <outlet property="countDownLabel" destination="u9O-iB-xy5" id="dU8-3i-Fuh"/>
                         <outlet property="deleBarButton" destination="Y3q-bo-B00" id="EEg-Fm-kPy"/>
+                        <outlet property="navBarOutlet" destination="afN-WQ-dA3" id="seb-WA-Twf"/>
+                        <outlet property="navBarTitle" destination="ROZ-5w-pu3" id="nN6-QF-jBz"/>
                         <outlet property="quoteLabel" destination="U7J-oh-VEg" id="eQg-PM-Zr5"/>
                         <outlet property="quoteLoadingActivityIndicator" destination="xW8-rR-47z" id="jBF-Ct-VSW"/>
                         <outlet property="startButton" destination="I5g-s7-M4M" id="Qa6-xw-tux"/>
@@ -188,7 +190,7 @@
             <objects>
                 <viewController title="Add Break" modalPresentationStyle="formSheet" id="dnh-ez-8Ze" customClass="AddBreakViewController" customModule="UnplugApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="idj-f5-isD">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0eO-3Y-zhz">
@@ -249,6 +251,7 @@
                     </view>
                     <connections>
                         <outlet property="breakNameTextField" destination="Eu3-cY-hra" id="9AY-Vd-sGL"/>
+                        <outlet property="navBarItemOutlet" destination="Ezs-ZG-4mN" id="ge4-Ht-rxL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oyv-8E-IH5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -263,7 +266,7 @@
                     <toolbarItems/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" translucent="NO" prompted="NO"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="7Bk-Bx-8ut">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.066666666669999999" green="0.16862745100000001" blue="0.23529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
@@ -278,7 +281,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Q3a-FI-iis"/>
+        <segue reference="SuK-8G-Tmn"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="pencil.tip" catalog="system" width="99" height="128"/>

@@ -9,6 +9,8 @@ import UIKit
 
 class BreakItemViewController: UIViewController {
     
+    @IBOutlet weak var navBarTitle: UINavigationItem!
+    @IBOutlet weak var navBarOutlet: UINavigationBar!
     var quoteManager = QuoteManager()
     let deleteAlert = DeleteBreakController()
     var countDownDelegate: CountDownBeganDelegate? = nil
@@ -36,9 +38,20 @@ class BreakItemViewController: UIViewController {
             self.secondsPassed = breakTime * 60
             countDownLabel?.text = updateCountdown(secondsPassed)
         }
-        currentBreakLabel?.text = breakName
+        
+        navBarTitle.title = breakName
         quoteManager.delegate = self
         quoteManager.getQuote()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        if #available(iOS 15.0 , *) {
+            
+        } else {
+            self.view.frame = CGRect(x: 0, y: UIScreen.main.bounds.height / 5 * 1, width: self.view.bounds.width, height: UIScreen.main.bounds.height / 5 * 4)
+            self.view.layer.cornerRadius = 30
+            self.view.layer.masksToBounds = true
+        }
     }
     
     @objc func updateTimer() {
@@ -59,9 +72,6 @@ class BreakItemViewController: UIViewController {
     
     func updateButtonTitle(_ currentTitle: String) {
         startButton.setTitle(currentTitle, for: .normal)
-    }
-    
-    @IBAction func doneBtnClicked(_ sender: Any) {
     }
     
     @IBAction func startBtnClicked(_ sender: UIButton) {
