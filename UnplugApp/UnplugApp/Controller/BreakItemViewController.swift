@@ -11,12 +11,12 @@ class BreakItemViewController: UIViewController {
     
     @IBOutlet weak var navBarTitle: UINavigationItem!
     @IBOutlet weak var navBarOutlet: UINavigationBar!
+    
     var quoteManager = QuoteManager()
     let deleteAlert = DeleteBreakController()
     var countDownDelegate: CountDownBeganDelegate? = nil
     
     @IBOutlet weak var deleBarButton: UIBarButtonItem!
-    @IBOutlet weak var currentBreakLabel: UILabel!
     @IBOutlet weak var countDownLabel: UILabel!
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var quoteLabel: UILabel!
@@ -32,7 +32,7 @@ class BreakItemViewController: UIViewController {
         super.viewDidLoad()
         
         quoteLoadingActivityIndicator.startAnimating()
-        startButton.layer.cornerRadius = 20
+        startButton.layer.cornerRadius = 10
         
         if let breakTime = defaultTime {
             self.secondsPassed = breakTime * 60
@@ -42,6 +42,9 @@ class BreakItemViewController: UIViewController {
         navBarTitle.title = breakName
         quoteManager.delegate = self
         quoteManager.getQuote()
+    }
+    
+    @IBAction func editButtonClicked(_ sender: Any) {
     }
     
     override func viewDidLayoutSubviews() {
@@ -81,13 +84,11 @@ class BreakItemViewController: UIViewController {
                 updateButtonTitle("START")
                 countDownDelegate?.countDownStarted(count: "\(defaultTime!) min(s)")
             } else if buttonTitle == "START" {
+                timer.invalidate()
                 updateButtonTitle("STOP")
                 timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
             }
         }
-    }
-    
-    @IBAction func editButtonClicked(_ sender: Any) {
     }
     
     @IBAction func deleteBarButtonClicked(_ sender: Any) {
@@ -104,9 +105,11 @@ extension BreakItemViewController: QuoteManagerDelegate {
     
     func didFailWithError(error: Error) {
         print(error)
+        quoteLoadingActivityIndicator.isHidden = true
     }
 }
 
+//MARK: - Edit Item Segue
 extension BreakItemViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         

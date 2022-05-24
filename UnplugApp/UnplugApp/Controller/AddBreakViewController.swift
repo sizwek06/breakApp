@@ -24,8 +24,14 @@ class AddBreakViewController: UIViewController {
         self.navigationItem.title = breakName
         
         breakNameTextField.text = breakName
-        navBarItemOutlet.title = breakName ?? "Unplug"
         
+        if let currentBreak = breakName {
+            navBarItemOutlet.title = currentBreak
+            navBarItemOutlet.rightBarButtonItem?.title = "Edit"
+        } else {
+            navBarItemOutlet.title = "New Break"
+            navBarItemOutlet.rightBarButtonItem?.title = "Add"
+        }
         NotificationCenter.default.addObserver(self, selector: #selector(AddBreakViewController.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
     }
 }
@@ -37,7 +43,7 @@ extension AddBreakViewController {
             
         } else {
             self.view.frame = CGRect(x: 0, y: UIScreen.main.bounds.height / 5 * 2, width: self.view.bounds.width, height: UIScreen.main.bounds.height / 5 * 3)
-            self.view.layer.cornerRadius = 30
+            self.view.layer.cornerRadius = 10
             self.view.layer.masksToBounds = true
         }
     }

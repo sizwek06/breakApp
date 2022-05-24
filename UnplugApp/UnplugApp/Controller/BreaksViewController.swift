@@ -13,7 +13,7 @@ class BreaksViewController: UITableViewController  {
     weak var delegate: CountDownBeganDelegate? = nil
     var currentIndexPath = IndexPath()
     
-     var breaksArray: [BreakItem] = [
+    var breaksArray: [BreakItem] = [
         BreakItem(name: "Lunch", breakLength: "60", timeOfDay: "2", reminder: "15", colour: "black"),
         BreakItem(name: "Shop", breakLength: "35", timeOfDay: "2", reminder: "15", colour: "black"),
         BreakItem(name: "Coffee", breakLength: "5", timeOfDay: "2", reminder: "15", colour: "black"),
@@ -42,6 +42,7 @@ class BreaksViewController: UITableViewController  {
 
 //MARK: - TableView DataSource
 extension BreaksViewController {
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return breaksArray.count
     }
@@ -71,13 +72,13 @@ extension BreaksViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "showBreakItem" {
-        let breaksViewController = segue.destination as! BreakItemViewController
-        breaksViewController.countDownDelegate = self
-        //TODO: make this into a guard let
-        if let indexPath = tableView.indexPathForSelectedRow {
-            breaksViewController.defaultTime = Int(breaksArray[indexPath.row].breakLength)
-            breaksViewController.breakName = breaksArray[indexPath.row].name
-        }
+            let breaksViewController = segue.destination as! BreakItemViewController
+            breaksViewController.countDownDelegate = self
+            //TODO: make this into a guard let
+            if let indexPath = tableView.indexPathForSelectedRow {
+                breaksViewController.defaultTime = Int(breaksArray[indexPath.row].breakLength)
+                breaksViewController.breakName = breaksArray[indexPath.row].name
+            }
         }
         
         if segue.identifier == "addBreakSegue" {

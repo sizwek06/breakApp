@@ -24,6 +24,7 @@
 		28A1B9702834777000057130 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28A1B96E2834777000057130 /* LaunchScreen.storyboard */; };
 		28A1B97A28347AB100057130 /* BreaksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A1B97928347AB100057130 /* BreaksViewController.swift */; };
 		28A1B98328348CDA00057130 /* BreakStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A1B98228348CDA00057130 /* BreakStruct.swift */; };
+		28D96F8A283C72D500BF4D64 /* StopTimerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D96F89283C72D500BF4D64 /* StopTimerDelegate.swift */; };
 		28EB51492837245B00059F79 /* BreakItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28EB5142283722F900059F79 /* BreakItemCell.xib */; };
 /* End PBXBuildFile section */
 
@@ -47,6 +48,7 @@
 		28A1B9712834777000057130 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		28A1B97928347AB100057130 /* BreaksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreaksViewController.swift; sourceTree = "<group>"; };
 		28A1B98228348CDA00057130 /* BreakStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreakStruct.swift; sourceTree = "<group>"; };
+		28D96F89283C72D500BF4D64 /* StopTimerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopTimerDelegate.swift; sourceTree = "<group>"; };
 		28EB5142283722F900059F79 /* BreakItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BreakItemCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -67,6 +69,7 @@
 				288356EB283853E5004898BB /* QuoteManager.swift */,
 				288356F628386384004898BB /* QuoteManagerDelegate.swift */,
 				288357022839A702004898BB /* CountDownDelegate.swift */,
+				28D96F89283C72D500BF4D64 /* StopTimerDelegate.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -215,6 +218,7 @@
 				288356EC283853E5004898BB /* QuoteManager.swift in Sources */,
 				287CEE7F2836EA050015E90F /* BreakItemCell.swift in Sources */,
 				28A1B98328348CDA00057130 /* BreakStruct.swift in Sources */,
+				28D96F8A283C72D500BF4D64 /* StopTimerDelegate.swift in Sources */,
 				288356E928385335004898BB /* QuoteData.swift in Sources */,
 				28A1B9612834776C00057130 /* AppDelegate.swift in Sources */,
 				28A1B96B2834776C00057130 /* UnplugApp.xcdatamodeld in Sources */,
