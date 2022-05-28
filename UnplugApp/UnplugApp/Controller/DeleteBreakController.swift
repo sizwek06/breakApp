@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 
 class DeleteBreakController: UIAlertController  {
+    //TODO: Refactor class name to include AlertController
     
     var breakName: String?
     

@@ -9,8 +9,12 @@ import UIKit
 class BreaksViewController: UITableViewController  {
     
     var currentCount: String?
+    var initialBreakTime: String?
+    var timer = Timer()
     
-    weak var delegate: CountDownBeganDelegate? = nil
+    var stopTimerDelegate: StopTimerDelegate? = nil
+    var countDownDelegate: CountDownBeganDelegate? = nil
+    
     var currentIndexPath = IndexPath()
     
     var breaksArray: [BreakItem] = [
@@ -27,17 +31,29 @@ class BreaksViewController: UITableViewController  {
         tableView.rowHeight = 100
         tableView.register(UINib(nibName: "BreakItemCell", bundle: nil), forCellReuseIdentifier: "breakItemCellId")
         
-        tableView.layer.cornerRadius = 30
+        tableView.layer.cornerRadius = 0
         tableView.separatorEffect = .none
-        delegate = self
         
         tableView.reloadData()
     }
     
     @IBAction func addBreakItem(_ sender: Any) {
+        print("addBreakItem clicked")
         performSegue(withIdentifier: "addBreakSegue", sender: self)
     }
     
+    @IBAction func refreshClicked(_ sender: UIBarButtonItem) {
+        print("refresh clicked")
+        resetTableViewCellTime()
+    }
+    
+    func resetTableViewCellTime() {
+        timer.invalidate()
+        if let resetCount = self.initialBreakTime {
+            breaksArray[currentIndexPath.row].breakLength = resetCount
+        }
+        tableView.reloadData()
+    }
 }
 
 //MARK: - TableView DataSource
@@ -53,7 +69,7 @@ extension BreaksViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "breakItemCellId", for: indexPath) as! BreakItemCell
         //TODO: make this into a guard let
         cell.breakNameLabel?.text = breakItem.name
-        cell.breakDurationLabel?.text = "Time Remaining: \(breakItem.breakLength)"
+        cell.breakDurationLabel?.text = "Time Remaining: \(breakItem.breakLength) min(s)"
         //TODO: Need to figure out how this will be stored and returned. Time convertion class?
         
         cell.selectionStyle = .none
@@ -64,6 +80,9 @@ extension BreaksViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "showBreakItem", sender: self)
         currentIndexPath = indexPath
+        self.initialBreakTime = breaksArray[indexPath.row].breakLength
+        
+        resetTableViewCellTime()
     }
 }
 
@@ -72,12 +91,12 @@ extension BreaksViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "showBreakItem" {
-            let breaksViewController = segue.destination as! BreakItemViewController
-            breaksViewController.countDownDelegate = self
+            let breakItemViewController = segue.destination as! BreakItemViewController
+            breakItemViewController.countDownDelegate = self
             //TODO: make this into a guard let
             if let indexPath = tableView.indexPathForSelectedRow {
-                breaksViewController.defaultTime = Int(breaksArray[indexPath.row].breakLength)
-                breaksViewController.breakName = breaksArray[indexPath.row].name
+                breakItemViewController.defaultTime = Int(breaksArray[indexPath.row].breakLength)
+                breakItemViewController.breakName = breaksArray[indexPath.row].name
             }
         }
         
@@ -90,8 +109,11 @@ extension BreaksViewController {
 
 //MARK: BreakItemViewController - DataEnteredDelegate
 extension BreaksViewController: CountDownBeganDelegate {
+    func resetTimeValue() {
+        breaksArray[currentIndexPath.row].breakLength = self.initialBreakTime!
+    }
     
-    func countDownStarted(count: String) {
+    func countDownStarted(count: String, timer: Timer) {
         self.currentCount = count
         //TODO: Update the cell
         

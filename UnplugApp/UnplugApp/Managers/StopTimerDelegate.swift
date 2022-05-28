@@ -8,5 +8,5 @@
 import Foundation
 
 protocol StopTimerDelegate: AnyObject {
-    func clearOldCountDownStarted(_ timer: Timer)
+    func stopCountDown()
 }

@@ -21,11 +21,10 @@ class AddBreakViewController: UIViewController {
         super.viewDidLoad()
         
         self.breakNameTextField.delegate = self
-        self.navigationItem.title = breakName
-        
-        breakNameTextField.text = breakName
         
         if let currentBreak = breakName {
+            self.navigationItem.title = currentBreak
+            breakNameTextField.text = currentBreak
             navBarItemOutlet.title = currentBreak
             navBarItemOutlet.rightBarButtonItem?.title = "Edit"
         } else {
@@ -39,25 +38,28 @@ class AddBreakViewController: UIViewController {
 //MARK: - View Manipulation
 extension AddBreakViewController {
     override func viewDidLayoutSubviews() {
-        if #available(iOS 15.0 , *) {
-            
-        } else {
-            self.view.frame = CGRect(x: 0, y: UIScreen.main.bounds.height / 5 * 2, width: self.view.bounds.width, height: UIScreen.main.bounds.height / 5 * 3)
-            self.view.layer.cornerRadius = 10
-            self.view.layer.masksToBounds = true
-        }
+        self.view.frame = CGRect(x: 0, y: UIScreen.main.bounds.height / 5 * 2, width: self.view.bounds.width, height: UIScreen.main.bounds.height / 5 * 3)
+        self.view.layer.cornerRadius = 10
+        self.view.layer.masksToBounds = true
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
-        guard ((notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue) != nil else {
-            
-            return
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            print(self.view.frame.origin.y)
+            if self.view.frame.origin.y != 0 {
+                print(keyboardSize.height)
+                self.view.frame.origin.y -= keyboardSize.height
+                self.view.frame = CGRect(x: 0, y: self.view.frame.origin.y, width: self.view.bounds.width, height: UIScreen.main.bounds.height / 5 * 3)
+                self.view.layoutSubviews()
+                self.view.layoutIfNeeded()
+            }
         }
-        self.view.frame.origin.y -= 80
     }
     
     @objc func keyboardWillHide(notification: NSNotification) {
-        self.view.frame.origin.y += 120
+        if self.view.frame.origin.y != 0 {
+                self.view.frame.origin.y = 0
+            }
     }
     
     @IBAction func cancelButtonClicked(_ sender: Any) {
@@ -69,7 +71,7 @@ extension AddBreakViewController {
 extension AddBreakViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.view.frame.origin.y += 120
+        self.view.frame.origin.y = 0
         self.view.endEditing(true)
         return false
     }

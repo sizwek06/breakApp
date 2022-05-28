@@ -48,24 +48,22 @@ class BreakItemViewController: UIViewController {
     }
     
     override func viewDidLayoutSubviews() {
-        if #available(iOS 15.0 , *) {
-            
-        } else {
             self.view.frame = CGRect(x: 0, y: UIScreen.main.bounds.height / 5 * 1, width: self.view.bounds.width, height: UIScreen.main.bounds.height / 5 * 4)
             self.view.layer.cornerRadius = 30
             self.view.layer.masksToBounds = true
         }
-    }
     
     @objc func updateTimer() {
         if secondsPassed != 0 {
             secondsPassed -= 1
             countDownLabel?.text = updateCountdown(secondsPassed)
-            countDownDelegate?.countDownStarted(count: updateCountdown(secondsPassed))
+            countDownDelegate?.countDownStarted(count: updateCountdown(secondsPassed), timer: self.timer)
         } else {
             timer.invalidate()
             updateButtonTitle("START")
             //TODO: Add a message once the break is over
+            
+            countDownDelegate?.resetTimeValue()
         }
     }
     
@@ -82,7 +80,8 @@ class BreakItemViewController: UIViewController {
             if buttonTitle == "STOP" {
                 timer.invalidate()
                 updateButtonTitle("START")
-                countDownDelegate?.countDownStarted(count: "\(defaultTime!) min(s)")
+                countDownDelegate?.countDownStarted(count: "\(defaultTime!) min(s)", timer: self.timer)
+                countDownDelegate?.resetTimeValue()
             } else if buttonTitle == "START" {
                 timer.invalidate()
                 updateButtonTitle("STOP")
@@ -120,5 +119,11 @@ extension BreakItemViewController {
             editbreaksViewController.defaultTime = self.defaultTime
             editbreaksViewController.breakName = self.breakName
         }
+    }
+}
+
+extension BreakItemViewController: StopTimerDelegate {
+    func stopCountDown() {
+        self.timer.invalidate()
     }
 }

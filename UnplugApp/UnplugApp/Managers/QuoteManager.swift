@@ -9,6 +9,7 @@ import Foundation
 
 struct QuoteManager {
     var delegate: QuoteManagerDelegate?
+    
     let baseURL = "https://type.fit/api/quotes"
     
     func getQuote() {

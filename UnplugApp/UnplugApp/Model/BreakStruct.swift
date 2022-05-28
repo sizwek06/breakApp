@@ -14,4 +14,3 @@ struct BreakItem {
     let reminder: String
     let colour: String
 }
-

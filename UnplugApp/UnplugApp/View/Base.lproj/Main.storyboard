@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="iZY-2P-3hu">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="iZY-2P-3hu">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -15,7 +16,7 @@
             <objects>
                 <tableViewController title="Unplug" id="MtZ-Zm-Vnk" customClass="BreaksViewController" customModule="UnplugApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="bhY-vV-LcM">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="692"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <color key="separatorColor" red="0.98039215686274506" green="0.94117647058823528" blue="0.84313725490196079" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -23,8 +24,8 @@
                         <color key="sectionIndexBackgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="sectionIndexTrackingBackgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="breakItemCellId" textLabel="jNH-2X-5yo" rowHeight="100" style="IBUITableViewCellStyleDefault" id="Sf1-de-13E">
-                                <rect key="frame" x="0.0" y="28" width="414" height="100"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="breakItemCellId" textLabel="jNH-2X-5yo" rowHeight="100" style="IBUITableViewCellStyleDefault" translatesAutoresizingMaskIntoConstraints="NO" id="Sf1-de-13E">
+                                <rect key="frame" x="0.0" y="44.666666030883789" width="414" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Sf1-de-13E" id="QMz-Y0-ou9">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
@@ -51,10 +52,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Unplug" id="gn7-Lg-1rR">
-                        <barButtonItem key="leftBarButtonItem" systemItem="refresh" id="JZP-2F-lmX">
+                        <barButtonItem key="leftBarButtonItem" id="5yY-fh-RoO">
+                            <imageReference key="image" image="clock.arrow.circlepath" catalog="system" symbolScale="large"/>
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
-                                <action selector="refreshClicked:" destination="MtZ-Zm-Vnk" id="paf-vE-gra"/>
+                                <action selector="refreshClicked:" destination="MtZ-Zm-Vnk" id="4BJ-WU-yzP"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="PTh-Ww-cLZ">
@@ -195,7 +197,7 @@
         <scene sceneID="ER4-zf-lHW">
             <objects>
                 <viewController title="Add Break" modalPresentationStyle="formSheet" id="dnh-ez-8Ze" customClass="AddBreakViewController" customModule="UnplugApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="idj-f5-isD">
+                    <view key="view" contentMode="center" id="idj-f5-isD">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -271,10 +273,10 @@
                 <navigationController title="Unplug" automaticallyAdjustsScrollViewInsets="NO" id="iZY-2P-3hu" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" translucent="NO" prompted="NO"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="7Bk-Bx-8ut">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Bk-Bx-8ut">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.066666666669999999" green="0.16862745100000001" blue="0.23529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -287,9 +289,10 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Q3a-FI-iis"/>
+        <segue reference="SuK-8G-Tmn"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="clock.arrow.circlepath" catalog="system" width="128" height="110"/>
         <image name="pencil.tip" catalog="system" width="99" height="128"/>
         <image name="pencil.tip.crop.circle" catalog="system" width="128" height="121"/>
         <image name="trash" catalog="system" width="121" height="128"/>
