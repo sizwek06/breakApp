@@ -27,11 +27,6 @@ struct Constants {
     static func rgb(r: CGFloat, g: CGFloat, b: CGFloat) -> UIColor {
         return UIColor(red: r/255, green: g/255, blue: b/255, alpha: 1)
     }
-//
-//    static let backgroundColor = UIColor.clear
-//    static let outlineStrokeColor = UIColor.black
-//    static let trackStrokeColor = UIColor.systemPink
-//    static let pulsatingFillColor = UIColor.clear
     
     static let backgroundColor = UIColor.clear
     static let outlineStrokeColor = Constants.rgb(r: 234, g: 46, b: 111)

@@ -42,19 +42,12 @@ class BreakItemViewController: UIViewController {
             self.secondsPassed = breakTime * 60
             countDownLabel?.text = updateCountdown(secondsPassed)
         }
-        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTap)))
         navBarTitle.title = breakName
         quoteManager.delegate = self
         quoteManager.getQuote()
         startButton.backgroundColor = Constants.trackStrokeColor
         countdownView.layer.addSublayer(setupCircleLayers())
         quoteLoadingActivityIndicator.color = Constants.outlineStrokeColor
-    }
-    
-    @objc private func handleTap() {
-        print("Attempting to animate stroke")
-        
-        animateCircle()
     }
     
     @IBAction func editButtonClicked(_ sender: Any) {
@@ -74,10 +67,10 @@ class BreakItemViewController: UIViewController {
             
             let aHundredPercent = CGFloat(self.defaultTime! * 60)
             let currentPercent = CGFloat(((self.defaultTime! * 60) - self.secondsPassed))
-            let desiredPoint = currentPercent / aHundredPercent
+            let strokePointPercent = currentPercent / aHundredPercent
             
             DispatchQueue.main.async {
-                self.shapeLayer.strokeEnd = desiredPoint
+                self.shapeLayer.strokeEnd = strokePointPercent
             }
         } else {
             timer.invalidate()
@@ -158,18 +151,6 @@ extension BreakItemViewController: StopTimerDelegate {
 
 //MARK: - Progress Bar
 extension BreakItemViewController {
-    fileprivate func animateCircle() {
-        let basicAnimation = CABasicAnimation(keyPath: "strokeEnd")
-        
-        basicAnimation.toValue = 1
-        
-        basicAnimation.duration = 2
-        
-        basicAnimation.fillMode = CAMediaTimingFillMode.forwards
-        basicAnimation.isRemovedOnCompletion = false
-        
-        shapeLayer.add(basicAnimation, forKey: "urSoBasic")
-    }
     
     private func createCircleShapeLayer(strokeColor: UIColor, fillColor: UIColor) -> CAShapeLayer {
         let layer = CAShapeLayer()
