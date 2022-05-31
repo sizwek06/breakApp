@@ -22,14 +22,16 @@ class BreaksViewController: UITableViewController  {
         BreakItem(name: "Shop", breakLength: "35", timeOfDay: "2", reminder: "15", colour: "black"),
         BreakItem(name: "Coffee", breakLength: "5", timeOfDay: "2", reminder: "15", colour: "black"),
         BreakItem(name: "School Run", breakLength: "45", timeOfDay: "2", reminder: "15", colour: "black"),
-        BreakItem(name: "Special Break", breakLength: "1", timeOfDay: "2", reminder: "15", colour: "black")
+        BreakItem(name: "Special Break", breakLength: "1", timeOfDay: "2", reminder: "15", colour: "black"),
+        BreakItem(name: "Special Breakx2", breakLength: "2", timeOfDay: "2", reminder: "15", colour: "black")
     ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.rowHeight = 100
-        tableView.register(UINib(nibName: "BreakItemCell", bundle: nil), forCellReuseIdentifier: "breakItemCellId")
+        tableView.register(UINib(nibName: "BreakItemCell", bundle: nil), forCellReuseIdentifier: BreakItem.identifier)
+        //TODO:MAsk Gugs about identifying nib name for costant file
         
         tableView.layer.cornerRadius = 0
         tableView.separatorEffect = .none
@@ -39,7 +41,7 @@ class BreaksViewController: UITableViewController  {
     
     @IBAction func addBreakItem(_ sender: Any) {
         print("addBreakItem clicked")
-        performSegue(withIdentifier: "addBreakSegue", sender: self)
+        performSegue(withIdentifier: Constants.addBreakItemSegue, sender: self)
     }
     
     @IBAction func refreshClicked(_ sender: UIBarButtonItem) {
@@ -66,7 +68,7 @@ extension BreaksViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let breakItem = breaksArray[indexPath.row]
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "breakItemCellId", for: indexPath) as! BreakItemCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: BreakItem.identifier, for: indexPath) as! BreakItemCell
         //TODO: make this into a guard let
         cell.breakNameLabel?.text = breakItem.name
         cell.breakDurationLabel?.text = "Time Remaining: \(breakItem.breakLength) min(s)"
@@ -78,7 +80,7 @@ extension BreaksViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "showBreakItem", sender: self)
+        performSegue(withIdentifier: Constants.showBreakItemSegue, sender: self)
         currentIndexPath = indexPath
         self.initialBreakTime = breaksArray[indexPath.row].breakLength
         
@@ -90,7 +92,7 @@ extension BreaksViewController {
 extension BreaksViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if segue.identifier == "showBreakItem" {
+        if segue.identifier == Constants.showBreakItemSegue {
             let breakItemViewController = segue.destination as! BreakItemViewController
             breakItemViewController.countDownDelegate = self
             //TODO: make this into a guard let
@@ -100,9 +102,9 @@ extension BreaksViewController {
             }
         }
         
-        if segue.identifier == "addBreakSegue" {
+        if segue.identifier == Constants.addBreakItemSegue {
             _ = segue.destination as! AddBreakViewController
-            shouldPerformSegue(withIdentifier: "addBreakSegue", sender: Any?.self)
+            shouldPerformSegue(withIdentifier: Constants.addBreakItemSegue, sender: Any?.self)
         }
     }
 }

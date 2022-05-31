@@ -12,9 +12,13 @@ class BreakItemViewController: UIViewController {
     @IBOutlet weak var navBarTitle: UINavigationItem!
     @IBOutlet weak var navBarOutlet: UINavigationBar!
     
+    var shapeLayer: CAShapeLayer!
+    var pulsatingLayer: CAShapeLayer!
     var quoteManager = QuoteManager()
     let deleteAlert = DeleteBreakController()
     var countDownDelegate: CountDownBeganDelegate? = nil
+    
+    @IBOutlet weak var countdownView: UIView!
     
     @IBOutlet weak var deleBarButton: UIBarButtonItem!
     @IBOutlet weak var countDownLabel: UILabel!
@@ -38,10 +42,19 @@ class BreakItemViewController: UIViewController {
             self.secondsPassed = breakTime * 60
             countDownLabel?.text = updateCountdown(secondsPassed)
         }
-        
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTap)))
         navBarTitle.title = breakName
         quoteManager.delegate = self
         quoteManager.getQuote()
+        startButton.backgroundColor = Constants.trackStrokeColor
+        countdownView.layer.addSublayer(setupCircleLayers())
+        quoteLoadingActivityIndicator.color = Constants.outlineStrokeColor
+    }
+    
+    @objc private func handleTap() {
+        print("Attempting to animate stroke")
+        
+        animateCircle()
     }
     
     @IBAction func editButtonClicked(_ sender: Any) {
@@ -58,9 +71,17 @@ class BreakItemViewController: UIViewController {
             secondsPassed -= 1
             countDownLabel?.text = updateCountdown(secondsPassed)
             countDownDelegate?.countDownStarted(count: updateCountdown(secondsPassed), timer: self.timer)
+            
+            let aHundredPercent = CGFloat(self.defaultTime! * 60)
+            let currentPercent = CGFloat(((self.defaultTime! * 60) - self.secondsPassed))
+            let desiredPoint = currentPercent / aHundredPercent
+            
+            DispatchQueue.main.async {
+                self.shapeLayer.strokeEnd = desiredPoint
+            }
         } else {
             timer.invalidate()
-            updateButtonTitle("START")
+            updateButton("START")
             //TODO: Add a message once the break is over
             
             countDownDelegate?.resetTimeValue()
@@ -71,7 +92,13 @@ class BreakItemViewController: UIViewController {
         return String(format: "%02d:%02d:%02d", 0, timeLeft / 60, timeLeft % 60)
     }
     
-    func updateButtonTitle(_ currentTitle: String) {
+    func updateButton(_ currentTitle: String) {
+        if startButton.backgroundColor == Constants.trackStrokeColor {
+            startButton.backgroundColor = Constants.outlineStrokeColor
+        } else {
+            startButton.backgroundColor = Constants.trackStrokeColor
+        }
+        
         startButton.setTitle(currentTitle, for: .normal)
     }
     
@@ -79,14 +106,15 @@ class BreakItemViewController: UIViewController {
         if let buttonTitle = sender.title(for: .normal) {
             if buttonTitle == "STOP" {
                 timer.invalidate()
-                updateButtonTitle("START")
                 countDownDelegate?.countDownStarted(count: "\(defaultTime!) min(s)", timer: self.timer)
                 countDownDelegate?.resetTimeValue()
             } else if buttonTitle == "START" {
-                timer.invalidate()
-                updateButtonTitle("STOP")
-                timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
+                DispatchQueue.main.async {
+                    self.timer.invalidate()
+                    self.timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.updateTimer), userInfo: nil, repeats: true)
+                }
             }
+            updateButton(Constants.startButtonTitle(buttonCurrenTitle: sender.currentTitle!))
         }
     }
     
@@ -112,7 +140,7 @@ extension BreakItemViewController: QuoteManagerDelegate {
 extension BreakItemViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if segue.identifier == "editButtonSegue" {
+        if segue.identifier == Constants.editButtonSegue {
             let editbreaksViewController = segue.destination as! AddBreakViewController
             //TODO: make this into a guard let
             
@@ -126,4 +154,46 @@ extension BreakItemViewController: StopTimerDelegate {
     func stopCountDown() {
         self.timer.invalidate()
     }
+}
+
+//MARK: - Progress Bar
+extension BreakItemViewController {
+    fileprivate func animateCircle() {
+        let basicAnimation = CABasicAnimation(keyPath: "strokeEnd")
+        
+        basicAnimation.toValue = 1
+        
+        basicAnimation.duration = 2
+        
+        basicAnimation.fillMode = CAMediaTimingFillMode.forwards
+        basicAnimation.isRemovedOnCompletion = false
+        
+        shapeLayer.add(basicAnimation, forKey: "urSoBasic")
+    }
+    
+    private func createCircleShapeLayer(strokeColor: UIColor, fillColor: UIColor) -> CAShapeLayer {
+        let layer = CAShapeLayer()
+        let circularPath = UIBezierPath(arcCenter: .zero, radius: 120, startAngle: 0.75 * CGFloat.pi, endAngle: 2.25 * CGFloat.pi, clockwise: true)
+        layer.path = circularPath.cgPath
+        layer.strokeColor = strokeColor.cgColor
+        layer.lineWidth = 30
+        layer.fillColor = fillColor.cgColor
+        layer.lineCap = CAShapeLayerLineCap.round
+        layer.position = countdownView.center
+        return layer
+    }
+    
+    private func setupCircleLayers() -> CALayer {
+        pulsatingLayer = createCircleShapeLayer(strokeColor: .clear, fillColor: .clear)
+        countdownView.layer.addSublayer(pulsatingLayer)
+        
+        let trackLayer = createCircleShapeLayer(strokeColor: Constants.trackStrokeColor, fillColor: Constants.backgroundColor)
+        countdownView.layer.addSublayer(trackLayer)
+        
+        shapeLayer = createCircleShapeLayer(strokeColor: Constants.outlineStrokeColor, fillColor: .clear)
+        shapeLayer.transform = CATransform3DMakeRotation(0 / 2, 0, 0, 1)
+        shapeLayer.strokeEnd = 0
+        return shapeLayer
+    }
+    
 }

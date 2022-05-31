@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		283B4F2A2844E351008F4AF1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283B4F292844E351008F4AF1 /* Constants.swift */; };
 		287CEE7F2836EA050015E90F /* BreakItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287CEE7D2836EA050015E90F /* BreakItemCell.swift */; };
 		288356E928385335004898BB /* QuoteData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288356E828385335004898BB /* QuoteData.swift */; };
 		288356EC283853E5004898BB /* QuoteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288356EB283853E5004898BB /* QuoteManager.swift */; };
@@ -29,6 +30,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		283B4F292844E351008F4AF1 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		287CEE7D2836EA050015E90F /* BreakItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreakItemCell.swift; sourceTree = "<group>"; };
 		288356E828385335004898BB /* QuoteData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteData.swift; sourceTree = "<group>"; };
 		288356EB283853E5004898BB /* QuoteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteManager.swift; sourceTree = "<group>"; };
@@ -63,6 +65,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		283B4F282844E344008F4AF1 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				283B4F292844E351008F4AF1 /* Constants.swift */,
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
 		288356F528386363004898BB /* Managers */ = {
 			isa = PBXGroup;
 			children = (
@@ -93,6 +103,7 @@
 		28A1B95F2834776C00057130 /* UnplugApp */ = {
 			isa = PBXGroup;
 			children = (
+				283B4F282844E344008F4AF1 /* New Group */,
 				288356F528386363004898BB /* Managers */,
 				28A1B98128348ABD00057130 /* Controller */,
 				28A1B98028348AB600057130 /* View */,
@@ -216,6 +227,7 @@
 				28A1B97A28347AB100057130 /* BreaksViewController.swift in Sources */,
 				28A1B9652834776C00057130 /* BreakItemViewController.swift in Sources */,
 				288356EC283853E5004898BB /* QuoteManager.swift in Sources */,
+				283B4F2A2844E351008F4AF1 /* Constants.swift in Sources */,
 				287CEE7F2836EA050015E90F /* BreakItemCell.swift in Sources */,
 				28A1B98328348CDA00057130 /* BreakStruct.swift in Sources */,
 				28D96F8A283C72D500BF4D64 /* StopTimerDelegate.swift in Sources */,

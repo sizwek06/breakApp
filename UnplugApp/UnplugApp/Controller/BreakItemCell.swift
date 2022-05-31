@@ -29,3 +29,16 @@ class BreakItemCell: UITableViewCell {
         cellView!.layer.borderColor = UIColor.black.cgColor
     }
 }
+
+//mark - UI Nib Details
+extension BreakItem {
+    
+    static var nib: UINib {
+        return UINib(nibName: identifier, bundle: nil)
+    }
+    
+    static var identifier: String {
+        return String(describing: self)
+    }
+}
+
