@@ -13,11 +13,12 @@ class AddBreakViewController: UIViewController {
     @IBOutlet weak var minsSegmentOutlet: UISegmentedControl!
     @IBOutlet weak var breakNameTextField: UITextField!
     
-    var countDownDelegate: CountDownBeganDelegate? = nil
+    var countDownDelegate: CountDownBeganDelegate?
     
     var defaultTime: Int?
     var breakName: String?
     var breakLength = "5"
+    var breakArrayIndex: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,10 +35,6 @@ class AddBreakViewController: UIViewController {
             navBarItemOutlet.rightBarButtonItem?.title = "Add"
         }
         NotificationCenter.default.addObserver(self, selector: #selector(AddBreakViewController.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-    }
-    
-    func dismissAddView() {
-        self.dismiss(animated: true)
     }
     
     @IBAction func durationSegmentClicked(_ sender: UIControl) {
@@ -59,15 +56,19 @@ class AddBreakViewController: UIViewController {
     
     @IBAction func topRightButtonClicked(_ sender: UIBarButtonItem) {
         if breakNameTextField.hasText == false {
-            present(PopUpConroller().showBreakAddedAlert(nil, nil), animated: true)
+            present(PopUpController().showBreakAddedAlert(nil, nil), animated: true)
         }
         else if let newbreakName = breakNameTextField.text {
             if navBarItemOutlet.rightBarButtonItem?.title == "Add" {
                 breaksArray.append(BreakItem(name: newbreakName, breakLength: breakLength, colour: "black"))
-                present(PopUpConroller().showBreakAddedAlert(newbreakName, "Add"), animated: true)
+                present(PopUpController().showBreakAddedAlert(newbreakName, "Add"), animated: true)
             }
             else if navBarItemOutlet.rightBarButtonItem?.title == "Edit" {
-                print("Edit clicked")
+                if let arrayIndex = breakArrayIndex {
+                    breaksArray[arrayIndex].name = newbreakName
+                    breaksArray[arrayIndex].breakLength = breakLength
+                    present(PopUpController().showBreakAddedAlert(newbreakName, "Edit"), animated: true)
+                }
             }
         }
         countDownDelegate?.reloadTable()

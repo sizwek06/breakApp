@@ -30,6 +30,10 @@ class BreaksViewController: UITableViewController  {
         tableView.reloadData()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData()
+    }
+    
     @IBAction func refreshClicked(_ sender: UIBarButtonItem) {
         print("refresh clicked")
         resetTableViewCellTime()
@@ -83,6 +87,7 @@ extension BreaksViewController {
             breakItemViewController.countDownDelegate = self
             //TODO: make this into a guard let
             if let indexPath = tableView.indexPathForSelectedRow {
+                breakItemViewController.breakArrayIndex = indexPath.row
                 breakItemViewController.defaultTime = Int(breaksArray[indexPath.row].breakLength)
                 breakItemViewController.breakName = breaksArray[indexPath.row].name
             }

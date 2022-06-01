@@ -8,7 +8,7 @@
 import Foundation
 
 struct BreakItem {
-    let name: String
+    var name: String
     var breakLength: String
-    let colour: String
+    var colour: String
 }

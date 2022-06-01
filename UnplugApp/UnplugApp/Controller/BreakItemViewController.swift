@@ -30,6 +30,7 @@ class BreakItemViewController: UIViewController {
     var secondsPassed = 0
     var defaultTime: Int?
     var breakName: String?
+    var breakArrayIndex: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -112,7 +113,7 @@ class BreakItemViewController: UIViewController {
     }
     
     @IBAction func deleteBarButtonClicked(_ sender: Any) {
-        present(PopUpConroller().showDeleteAlert(breakName!), animated: true, completion: nil)
+        present(PopUpController().showDeleteAlert(breakName!), animated: true, completion: nil)
     }
 }
 
@@ -136,7 +137,8 @@ extension BreakItemViewController {
         if segue.identifier == Constants.editButtonSegue {
             let editbreaksViewController = segue.destination as! AddBreakViewController
             //TODO: make this into a guard let
-            
+            editbreaksViewController.countDownDelegate = countDownDelegate
+            editbreaksViewController.breakArrayIndex = breakArrayIndex
             editbreaksViewController.defaultTime = self.defaultTime
             editbreaksViewController.breakName = self.breakName
         }

@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class PopUpConroller: UIAlertController  {
+class PopUpController: UIAlertController  {
     //TODO: Refactor class name to include AlertController
     
     var breakName: String?
@@ -39,7 +39,7 @@ class PopUpConroller: UIAlertController  {
             message = "Please enter a break name in the text field!"
         } else if condition == "Edit" {
             title = "Break Successful"
-            message = "Your new Break \(breakName!) was updated successfully!"
+            message = "Your Break was updated successfully to \(breakName!)!"
         }  else if condition == "Add" {
             title = "Break Successful"
             message = "Your new Break \(breakName!) was added successfully!"
