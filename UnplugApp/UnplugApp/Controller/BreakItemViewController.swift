@@ -15,7 +15,6 @@ class BreakItemViewController: UIViewController {
     var shapeLayer: CAShapeLayer!
     var pulsatingLayer: CAShapeLayer!
     var quoteManager = QuoteManager()
-    let deleteAlert = DeleteBreakController()
     var countDownDelegate: CountDownBeganDelegate? = nil
     
     @IBOutlet weak var countdownView: UIView!
@@ -42,6 +41,7 @@ class BreakItemViewController: UIViewController {
             self.secondsPassed = breakTime * 60
             countDownLabel?.text = updateCountdown(secondsPassed)
         }
+        
         navBarTitle.title = breakName
         quoteManager.delegate = self
         quoteManager.getQuote()
@@ -54,10 +54,10 @@ class BreakItemViewController: UIViewController {
     }
     
     override func viewDidLayoutSubviews() {
-            self.view.frame = CGRect(x: 0, y: UIScreen.main.bounds.height / 5 * 1, width: self.view.bounds.width, height: UIScreen.main.bounds.height / 5 * 4)
-            self.view.layer.cornerRadius = 30
-            self.view.layer.masksToBounds = true
-        }
+        self.view.frame = CGRect(x: 0, y: UIScreen.main.bounds.height / 5 * 1, width: self.view.bounds.width, height: UIScreen.main.bounds.height / 5 * 4)
+        self.view.layer.cornerRadius = 30
+        self.view.layer.masksToBounds = true
+    }
     
     @objc func updateTimer() {
         if secondsPassed != 0 {
@@ -112,7 +112,7 @@ class BreakItemViewController: UIViewController {
     }
     
     @IBAction func deleteBarButtonClicked(_ sender: Any) {
-        present(deleteAlert.showDeleteAlert(breakName!), animated: true, completion: nil)
+        present(PopUpConroller().showDeleteAlert(breakName!), animated: true, completion: nil)
     }
 }
 

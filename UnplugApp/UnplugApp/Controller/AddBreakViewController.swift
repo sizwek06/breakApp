@@ -10,12 +10,14 @@ import UIKit
 class AddBreakViewController: UIViewController {
     
     @IBOutlet weak var navBarItemOutlet: UINavigationItem!
-    
     @IBOutlet weak var minsSegmentOutlet: UISegmentedControl!
     @IBOutlet weak var breakNameTextField: UITextField!
     
+    var countDownDelegate: CountDownBeganDelegate? = nil
+    
     var defaultTime: Int?
     var breakName: String?
+    var breakLength = "5"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,13 +35,50 @@ class AddBreakViewController: UIViewController {
         }
         NotificationCenter.default.addObserver(self, selector: #selector(AddBreakViewController.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
     }
+    
+    func dismissAddView() {
+        self.dismiss(animated: true)
+    }
+    
+    @IBAction func durationSegmentClicked(_ sender: UIControl) {
+        switch minsSegmentOutlet.selectedSegmentIndex {
+        case 0:
+            breakLength = "5"
+        case 1:
+            breakLength = "10"
+        case 2:
+            breakLength = "15"
+        case 3:
+            breakLength = "30"
+        case 4:
+            breakLength = "60"
+        default:
+            breakLength = "5"
+        }
+    }
+    
+    @IBAction func topRightButtonClicked(_ sender: UIBarButtonItem) {
+        if breakNameTextField.hasText == false {
+            present(PopUpConroller().showBreakAddedAlert(nil, nil), animated: true)
+        }
+        else if let newbreakName = breakNameTextField.text {
+            if navBarItemOutlet.rightBarButtonItem?.title == "Add" {
+                breaksArray.append(BreakItem(name: newbreakName, breakLength: breakLength, colour: "black"))
+                present(PopUpConroller().showBreakAddedAlert(newbreakName, "Add"), animated: true)
+            }
+            else if navBarItemOutlet.rightBarButtonItem?.title == "Edit" {
+                print("Edit clicked")
+            }
+        }
+        countDownDelegate?.reloadTable()
+    }
 }
 
 //MARK: - View Manipulation
 extension AddBreakViewController {
     override func viewDidLayoutSubviews() {
-        self.view.frame = CGRect(x: 0, y: UIScreen.main.bounds.height / 5 * 2, width: self.view.bounds.width, height: UIScreen.main.bounds.height / 5 * 3)
-        self.view.layer.cornerRadius = 10
+        self.view.frame = CGRect(x: 0, y: UIScreen.main.bounds.height / 3, width: self.view.bounds.width, height: UIScreen.main.bounds.height / 5 * 3)
+        self.view.layer.cornerRadius = 20
         self.view.layer.masksToBounds = true
     }
     
@@ -58,8 +97,8 @@ extension AddBreakViewController {
     
     @objc func keyboardWillHide(notification: NSNotification) {
         if self.view.frame.origin.y != 0 {
-                self.view.frame.origin.y = 0
-            }
+            self.view.frame.origin.y = 0
+        }
     }
     
     @IBAction func cancelButtonClicked(_ sender: Any) {

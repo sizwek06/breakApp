@@ -11,4 +11,6 @@ protocol CountDownBeganDelegate: AnyObject {
     func countDownStarted(count: String, timer: Timer)
     
     func resetTimeValue()
+    
+    func reloadTable()
 }
