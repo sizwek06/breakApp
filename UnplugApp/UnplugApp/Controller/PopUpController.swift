@@ -13,16 +13,22 @@ class PopUpController: UIAlertController  {
     
     var breakName: String?
     
-    func showDeleteAlert(_ breakName: String) -> UIAlertController {
+    var closeViewDelegate: CloseViewDelegate?
+    var countDownDelegate: CountDownBeganDelegate?
+    
+    func showDeleteAlert(_ breakName: String,_ currentArrayIndex: Int, viewController: UIViewController) -> UIAlertController {
         let deleteAlert = UIAlertController(title: "Delete \(breakName)?", message: "Are you sure you'd like to delete \(breakName)?", preferredStyle: .alert)
         
         let cancelAlertAction = UIAlertAction(title: "Cancel", style: .cancel) { (cancelAlertAction) in
             deleteAlert.dismiss(animated: true, completion: nil)
         }
         
-        let deleteAlertAction = UIAlertAction(title: "Delete", style: .destructive) { (cancelAlertAction) in
-            deleteAlert.dismiss(animated: true, completion: nil)
-            //TODO: Add delete break functionality
+        let deleteAlertAction = UIAlertAction(title: "Delete", style: .destructive) { (deleteAlertAction) in
+            deleteAlert.dismiss(animated: true) {
+                breaksArray.remove(at: currentArrayIndex)
+                print("Should reloadTable soon")
+                self.countDownDelegate?.reloadTable()
+            }
         }
         
         deleteAlert.addAction(cancelAlertAction)

@@ -30,21 +30,9 @@ class BreaksViewController: UITableViewController  {
         tableView.reloadData()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        tableView.reloadData()
-    }
-    
     @IBAction func refreshClicked(_ sender: UIBarButtonItem) {
         print("refresh clicked")
-        resetTableViewCellTime()
-    }
-    
-    func resetTableViewCellTime() {
-        timer.invalidate()
-        if let resetCount = self.initialBreakTime {
-            breaksArray[currentIndexPath.row].breakLength = resetCount
-        }
-        tableView.reloadData()
+        reloadTable()
     }
 }
 
@@ -73,8 +61,6 @@ extension BreaksViewController {
         performSegue(withIdentifier: Constants.showBreakItemSegue, sender: self)
         currentIndexPath = indexPath
         self.initialBreakTime = breaksArray[indexPath.row].breakLength
-        
-        resetTableViewCellTime()
     }
 }
 

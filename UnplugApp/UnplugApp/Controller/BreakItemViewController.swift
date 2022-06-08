@@ -15,10 +15,11 @@ class BreakItemViewController: UIViewController {
     var shapeLayer: CAShapeLayer!
     var pulsatingLayer: CAShapeLayer!
     var quoteManager = QuoteManager()
-    var countDownDelegate: CountDownBeganDelegate? = nil
+    var countDownDelegate: CountDownBeganDelegate?
     
     @IBOutlet weak var countdownView: UIView!
     
+    @IBOutlet var breakItemView: UIView!
     @IBOutlet weak var deleBarButton: UIBarButtonItem!
     @IBOutlet weak var countDownLabel: UILabel!
     @IBOutlet weak var startButton: UIButton!
@@ -112,8 +113,18 @@ class BreakItemViewController: UIViewController {
         }
     }
     
-    @IBAction func deleteBarButtonClicked(_ sender: Any) {
-        present(PopUpController().showDeleteAlert(breakName!), animated: true, completion: nil)
+    @IBAction func deleteBarButtonClicked(_ sender: UIBarButtonItem) {
+        if let currentArrayIndex = self.breakArrayIndex {
+            let deletePopUp = PopUpController()
+            deletePopUp.countDownDelegate = self.countDownDelegate
+            //TODO: Double check this with Gugs
+            
+            //4 AM Seez here, here we create the deletePopUp like this so we may apply the delegate method to itself
+            //So that when the delete button is clicked in the next present, the delete AND reload table occurs
+            present(deletePopUp.showDeleteAlert(breakName!, currentArrayIndex, viewController: self), animated: true)
+        }
+
+        //TODO: Gugus - Why won't it pop view?
     }
 }
 
@@ -178,5 +189,11 @@ extension BreakItemViewController {
         shapeLayer.strokeEnd = 0
         return shapeLayer
     }
-    
+}
+
+extension BreakItemViewController: CloseViewDelegate {
+    func didSelectClose(_ viewController: UIViewController) {
+        print("Did Select Close Method Reached.")
+        self.dismiss(animated: true, completion: nil)
+    }
 }

@@ -193,6 +193,7 @@
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <connections>
+                        <outlet property="breakItemView" destination="omM-Ax-C7H" id="CRR-Vy-LXL"/>
                         <outlet property="countDownLabel" destination="u9O-iB-xy5" id="dU8-3i-Fuh"/>
                         <outlet property="countdownView" destination="xby-QR-v10" id="Rjc-by-oqi"/>
                         <outlet property="deleBarButton" destination="Y3q-bo-B00" id="EEg-Fm-kPy"/>
