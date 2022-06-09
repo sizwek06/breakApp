@@ -16,6 +16,7 @@ class BreakItemViewController: UIViewController {
     var pulsatingLayer: CAShapeLayer!
     var quoteManager = QuoteManager()
     var countDownDelegate: CountDownBeganDelegate?
+    var closeViewDelegate: CloseViewDelegate?
     
     @IBOutlet weak var countdownView: UIView!
     
@@ -117,13 +118,13 @@ class BreakItemViewController: UIViewController {
         if let currentArrayIndex = self.breakArrayIndex {
             let deletePopUp = PopUpController()
             deletePopUp.countDownDelegate = self.countDownDelegate
+            deletePopUp.closeViewDelegate = self.closeViewDelegate
             //TODO: Double check this with Gugs
             
             //4 AM Seez here, here we create the deletePopUp like this so we may apply the delegate method to itself
             //So that when the delete button is clicked in the next present, the delete AND reload table occurs
             present(deletePopUp.showDeleteAlert(breakName!, currentArrayIndex, viewController: self), animated: true)
         }
-
         //TODO: Gugus - Why won't it pop view?
     }
 }
@@ -146,8 +147,10 @@ extension BreakItemViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == Constants.editButtonSegue {
-            let editbreaksViewController = segue.destination as! AddBreakViewController
-            //TODO: make this into a guard let
+            guard let editbreaksViewController = segue.destination as? AddBreakViewController else { return }
+            
+            editbreaksViewController.reloadViewTitleDelegate = self
+            
             editbreaksViewController.countDownDelegate = countDownDelegate
             editbreaksViewController.breakArrayIndex = breakArrayIndex
             editbreaksViewController.defaultTime = self.defaultTime
@@ -195,5 +198,11 @@ extension BreakItemViewController: CloseViewDelegate {
     func didSelectClose(_ viewController: UIViewController) {
         print("Did Select Close Method Reached.")
         self.dismiss(animated: true, completion: nil)
+    }
+}
+
+extension BreakItemViewController: ReloadViewTitleDelegate {
+    func refreshTitle(_ viewTitle: String) {
+        navBarTitle.title = viewTitle
     }
 }

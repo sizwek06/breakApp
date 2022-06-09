@@ -24,7 +24,7 @@
                         <color key="sectionIndexBackgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="sectionIndexTrackingBackgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="breakItemCellId" textLabel="jNH-2X-5yo" rowHeight="100" style="IBUITableViewCellStyleDefault" translatesAutoresizingMaskIntoConstraints="NO" id="Sf1-de-13E">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="breakItemCellId" textLabel="jNH-2X-5yo" rowHeight="100" style="IBUITableViewCellStyleDefault" translatesAutoresizingMaskIntoConstraints="NO" id="Sf1-de-13E">
                                 <rect key="frame" x="0.0" y="44.5" width="414" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Sf1-de-13E" id="QMz-Y0-ou9">
@@ -225,7 +225,7 @@
                                 </textAttributes>
                                 <items>
                                     <navigationItem title="Add Break" id="Ezs-ZG-4mN">
-                                        <barButtonItem key="leftBarButtonItem" image="x.circle" catalog="system" id="SjF-Ne-FQl">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="SjF-Ne-FQl">
                                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <connections>
                                                 <action selector="cancelButtonClicked:" destination="dnh-ez-8Ze" id="e0h-v2-0gp"/>
@@ -318,7 +318,6 @@
         <image name="pencil.tip" catalog="system" width="99" height="128"/>
         <image name="pencil.tip.crop.circle" catalog="system" width="128" height="121"/>
         <image name="trash" catalog="system" width="121" height="128"/>
-        <image name="x.circle" catalog="system" width="128" height="121"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

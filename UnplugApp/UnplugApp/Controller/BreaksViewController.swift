@@ -69,9 +69,11 @@ extension BreaksViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == Constants.showBreakItemSegue {
-            let breakItemViewController = segue.destination as! BreakItemViewController
+            guard let breakItemViewController = segue.destination as? BreakItemViewController else { return }
+            
             breakItemViewController.countDownDelegate = self
-            //TODO: make this into a guard let
+            breakItemViewController.closeViewDelegate = self
+            
             if let indexPath = tableView.indexPathForSelectedRow {
                 breakItemViewController.breakArrayIndex = indexPath.row
                 breakItemViewController.defaultTime = Int(breaksArray[indexPath.row].breakLength)
@@ -80,8 +82,11 @@ extension BreaksViewController {
         }
         
         if segue.identifier == Constants.addBreakItemSegue {
-            let addBreakViewController = segue.destination as! AddBreakViewController
+            guard let addBreakViewController = segue.destination as? AddBreakViewController else { return }
+            
             addBreakViewController.countDownDelegate = self
+            addBreakViewController.closeViewDelegate = self
+            
             shouldPerformSegue(withIdentifier: Constants.addBreakItemSegue, sender: Any?.self)
         }
     }
@@ -99,11 +104,17 @@ extension BreaksViewController: CountDownBeganDelegate {
     
     func countDownStarted(count: String, timer: Timer) {
         self.currentCount = count
-        //TODO: Update the cell
+        //TODO: Update the cell's look to indicate active?
         
         breaksArray[currentIndexPath.row].breakLength = count
         
         //TODO: highlight the current cell?
         tableView.reloadData()
+    }
+}
+
+extension BreaksViewController: CloseViewDelegate {
+    func didSelectClose(_ viewController: UIViewController) {
+        self.dismiss(animated: true)
     }
 }

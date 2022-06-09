@@ -29,6 +29,7 @@
 		28B720E8284835F7005D3D9F /* CloseViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B720E7284835F7005D3D9F /* CloseViewDelegate.swift */; };
 		28D96F8A283C72D500BF4D64 /* StopTimerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D96F89283C72D500BF4D64 /* StopTimerDelegate.swift */; };
 		28EB51492837245B00059F79 /* BreakItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28EB5142283722F900059F79 /* BreakItemCell.xib */; };
+		28EEDAB9285183840016B19E /* ReloadViewTitleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EEDAB8285183840016B19E /* ReloadViewTitleDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,7 @@
 		28B720E7284835F7005D3D9F /* CloseViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseViewDelegate.swift; sourceTree = "<group>"; };
 		28D96F89283C72D500BF4D64 /* StopTimerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopTimerDelegate.swift; sourceTree = "<group>"; };
 		28EB5142283722F900059F79 /* BreakItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BreakItemCell.xib; sourceTree = "<group>"; };
+		28EEDAB8285183840016B19E /* ReloadViewTitleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReloadViewTitleDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +87,7 @@
 				288357022839A702004898BB /* CountDownDelegate.swift */,
 				28D96F89283C72D500BF4D64 /* StopTimerDelegate.swift */,
 				28B720E7284835F7005D3D9F /* CloseViewDelegate.swift */,
+				28EEDAB8285183840016B19E /* ReloadViewTitleDelegate.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -242,6 +245,7 @@
 				288356E928385335004898BB /* QuoteData.swift in Sources */,
 				28A1B9612834776C00057130 /* AppDelegate.swift in Sources */,
 				28A1B96B2834776C00057130 /* UnplugApp.xcdatamodeld in Sources */,
+				28EEDAB9285183840016B19E /* ReloadViewTitleDelegate.swift in Sources */,
 				2883570B2839B5EF004898BB /* AddBreakViewController.swift in Sources */,
 				28A1B9632834776C00057130 /* SceneDelegate.swift in Sources */,
 			);

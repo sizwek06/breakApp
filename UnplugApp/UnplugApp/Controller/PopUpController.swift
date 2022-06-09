@@ -28,6 +28,7 @@ class PopUpController: UIAlertController  {
                 breaksArray.remove(at: currentArrayIndex)
                 print("Should reloadTable soon")
                 self.countDownDelegate?.reloadTable()
+                self.closeViewDelegate?.didSelectClose(self)
             }
         }
         
@@ -55,6 +56,7 @@ class PopUpController: UIAlertController  {
         
         let oKAlertAction = UIAlertAction(title: "OK", style: .default) { (oKAlertAction) in
             infoAlert.dismiss(animated: true, completion: nil)
+            self.closeViewDelegate?.didSelectClose(self)
         }
         
         infoAlert.addAction(oKAlertAction)
