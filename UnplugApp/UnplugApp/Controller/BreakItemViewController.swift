@@ -79,7 +79,7 @@ class BreakItemViewController: UIViewController {
             timer.invalidate()
             updateButton("START")
             //TODO: Add a message once the break is over
-            
+            quoteManager.getQuote()
             countDownDelegate?.resetTimeValue()
         }
     }
@@ -125,7 +125,6 @@ class BreakItemViewController: UIViewController {
             //So that when the delete button is clicked in the next present, the delete AND reload table occurs
             present(deletePopUp.showDeleteAlert(breakName!, currentArrayIndex, viewController: self), animated: true)
         }
-        //TODO: Gugus - Why won't it pop view?
     }
 }
 
@@ -196,12 +195,15 @@ extension BreakItemViewController {
 
 extension BreakItemViewController: CloseViewDelegate {
     func didSelectClose(_ viewController: UIViewController) {
-        print("Did Select Close Method Reached.")
         self.dismiss(animated: true, completion: nil)
     }
 }
 
-extension BreakItemViewController: ReloadViewTitleDelegate {
+extension BreakItemViewController: ReloadBreakDetailsDelegate {
+    func refreshBreakDuration(_ breakDuration: Int) {
+        countDownLabel?.text = updateCountdown(breakDuration * 60)
+    }
+    
     func refreshTitle(_ viewTitle: String) {
         navBarTitle.title = viewTitle
     }

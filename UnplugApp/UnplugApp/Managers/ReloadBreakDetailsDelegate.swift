@@ -8,7 +8,9 @@
 import Foundation
 import UIKit
 
-protocol ReloadViewTitleDelegate: AnyObject {
+protocol ReloadBreakDetailsDelegate: AnyObject {
     
     func refreshTitle(_ viewTitle: String)
+    
+    func refreshBreakDuration(_ breakDuration: Int)
 }

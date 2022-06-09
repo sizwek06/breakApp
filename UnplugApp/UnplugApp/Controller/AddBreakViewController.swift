@@ -15,7 +15,7 @@ class AddBreakViewController: UIViewController {
     
     var countDownDelegate: CountDownBeganDelegate?
     var closeViewDelegate: CloseViewDelegate?
-    var reloadViewTitleDelegate: ReloadViewTitleDelegate?
+    var reloadViewTitleDelegate: ReloadBreakDetailsDelegate?
     
     var defaultTime: Int?
     var breakName: String?
@@ -74,6 +74,7 @@ class AddBreakViewController: UIViewController {
                     breaksArray[arrayIndex].breakLength = breakLength
                     present(infoPopUp.showBreakAddedAlert(newbreakName, "Edit"), animated: true)
                     reloadViewTitleDelegate?.refreshTitle(newbreakName)
+                    reloadViewTitleDelegate?.refreshBreakDuration(Int(breakLength)!)
                 }
             }
         }
