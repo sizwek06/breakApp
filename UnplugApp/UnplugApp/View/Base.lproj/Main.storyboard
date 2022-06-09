@@ -62,8 +62,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="PTh-Ww-cLZ">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
-                                <action selector="addBreakItem:" destination="MtZ-Zm-Vnk" id="E2b-R3-aUe"/>
-                                <segue destination="dnh-ez-8Ze" kind="presentation" identifier="addBreakSegue" id="Q3a-FI-iis"/>
+                                <segue destination="dnh-ez-8Ze" kind="presentation" identifier="addBreakSegue" id="nN0-74-9Pk"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -194,6 +193,7 @@
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <connections>
+                        <outlet property="breakItemView" destination="omM-Ax-C7H" id="CRR-Vy-LXL"/>
                         <outlet property="countDownLabel" destination="u9O-iB-xy5" id="dU8-3i-Fuh"/>
                         <outlet property="countdownView" destination="xby-QR-v10" id="Rjc-by-oqi"/>
                         <outlet property="deleBarButton" destination="Y3q-bo-B00" id="EEg-Fm-kPy"/>
@@ -225,7 +225,7 @@
                                 </textAttributes>
                                 <items>
                                     <navigationItem title="Add Break" id="Ezs-ZG-4mN">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="SjF-Ne-FQl">
+                                        <barButtonItem key="leftBarButtonItem" image="x.circle" catalog="system" id="SjF-Ne-FQl">
                                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <connections>
                                                 <action selector="cancelButtonClicked:" destination="dnh-ez-8Ze" id="e0h-v2-0gp"/>
@@ -233,6 +233,9 @@
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="Add" id="gFk-Ft-xXZ">
                                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <connections>
+                                                <action selector="topRightButtonClicked:" destination="dnh-ez-8Ze" id="1ag-pJ-NYh"/>
+                                            </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
@@ -253,6 +256,9 @@
                                     <segment title="30 mins"/>
                                     <segment title="1 hr"/>
                                 </segments>
+                                <connections>
+                                    <action selector="durationSegmentClicked:" destination="dnh-ez-8Ze" eventType="valueChanged" id="8Wv-7D-IaZ"/>
+                                </connections>
                             </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Break Duration" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GGs-c5-1k3">
                                 <rect key="frame" x="20" y="177" width="265" height="21"/>
@@ -274,6 +280,7 @@
                     </view>
                     <connections>
                         <outlet property="breakNameTextField" destination="Eu3-cY-hra" id="9AY-Vd-sGL"/>
+                        <outlet property="minsSegmentOutlet" destination="2xI-Ue-zjD" id="mIe-8Q-xW9"/>
                         <outlet property="navBarItemOutlet" destination="Ezs-ZG-4mN" id="ge4-Ht-rxL"/>
                     </connections>
                 </viewController>
@@ -304,13 +311,14 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="SuK-8G-Tmn"/>
+        <segue reference="nN0-74-9Pk"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="clock.arrow.circlepath" catalog="system" width="128" height="110"/>
         <image name="pencil.tip" catalog="system" width="99" height="128"/>
         <image name="pencil.tip.crop.circle" catalog="system" width="128" height="121"/>
         <image name="trash" catalog="system" width="121" height="128"/>
+        <image name="x.circle" catalog="system" width="128" height="121"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

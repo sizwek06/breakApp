@@ -17,21 +17,12 @@ class BreaksViewController: UITableViewController  {
     
     var currentIndexPath = IndexPath()
     
-    var breaksArray: [BreakItem] = [
-        BreakItem(name: "Lunch", breakLength: "60", timeOfDay: "2", reminder: "15", colour: "black"),
-        BreakItem(name: "Shop", breakLength: "35", timeOfDay: "2", reminder: "15", colour: "black"),
-        BreakItem(name: "Coffee", breakLength: "5", timeOfDay: "2", reminder: "15", colour: "black"),
-        BreakItem(name: "School Run", breakLength: "45", timeOfDay: "2", reminder: "15", colour: "black"),
-        BreakItem(name: "Special Break", breakLength: "1", timeOfDay: "2", reminder: "15", colour: "black"),
-        BreakItem(name: "Special Breakx2", breakLength: "2", timeOfDay: "2", reminder: "15", colour: "black")
-    ]
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.rowHeight = 100
         tableView.register(UINib(nibName: "BreakItemCell", bundle: nil), forCellReuseIdentifier: BreakItem.identifier)
-        //TODO:MAsk Gugs about identifying nib name for costant file
+        //TODO:Ask Gugs about identifying nib name for costant file
         
         tableView.layer.cornerRadius = 0
         tableView.separatorEffect = .none
@@ -39,22 +30,9 @@ class BreaksViewController: UITableViewController  {
         tableView.reloadData()
     }
     
-    @IBAction func addBreakItem(_ sender: Any) {
-        print("addBreakItem clicked")
-        performSegue(withIdentifier: Constants.addBreakItemSegue, sender: self)
-    }
-    
     @IBAction func refreshClicked(_ sender: UIBarButtonItem) {
         print("refresh clicked")
-        resetTableViewCellTime()
-    }
-    
-    func resetTableViewCellTime() {
-        timer.invalidate()
-        if let resetCount = self.initialBreakTime {
-            breaksArray[currentIndexPath.row].breakLength = resetCount
-        }
-        tableView.reloadData()
+        reloadTable()
     }
 }
 
@@ -83,8 +61,6 @@ extension BreaksViewController {
         performSegue(withIdentifier: Constants.showBreakItemSegue, sender: self)
         currentIndexPath = indexPath
         self.initialBreakTime = breaksArray[indexPath.row].breakLength
-        
-        resetTableViewCellTime()
     }
 }
 
@@ -97,13 +73,15 @@ extension BreaksViewController {
             breakItemViewController.countDownDelegate = self
             //TODO: make this into a guard let
             if let indexPath = tableView.indexPathForSelectedRow {
+                breakItemViewController.breakArrayIndex = indexPath.row
                 breakItemViewController.defaultTime = Int(breaksArray[indexPath.row].breakLength)
                 breakItemViewController.breakName = breaksArray[indexPath.row].name
             }
         }
         
         if segue.identifier == Constants.addBreakItemSegue {
-            _ = segue.destination as! AddBreakViewController
+            let addBreakViewController = segue.destination as! AddBreakViewController
+            addBreakViewController.countDownDelegate = self
             shouldPerformSegue(withIdentifier: Constants.addBreakItemSegue, sender: Any?.self)
         }
     }
@@ -111,6 +89,10 @@ extension BreaksViewController {
 
 //MARK: BreakItemViewController - DataEnteredDelegate
 extension BreaksViewController: CountDownBeganDelegate {
+    func reloadTable() {
+        tableView.reloadData()
+    }
+    
     func resetTimeValue() {
         breaksArray[currentIndexPath.row].breakLength = self.initialBreakTime!
     }

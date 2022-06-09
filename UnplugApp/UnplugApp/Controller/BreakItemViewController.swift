@@ -15,11 +15,11 @@ class BreakItemViewController: UIViewController {
     var shapeLayer: CAShapeLayer!
     var pulsatingLayer: CAShapeLayer!
     var quoteManager = QuoteManager()
-    let deleteAlert = DeleteBreakController()
-    var countDownDelegate: CountDownBeganDelegate? = nil
+    var countDownDelegate: CountDownBeganDelegate?
     
     @IBOutlet weak var countdownView: UIView!
     
+    @IBOutlet var breakItemView: UIView!
     @IBOutlet weak var deleBarButton: UIBarButtonItem!
     @IBOutlet weak var countDownLabel: UILabel!
     @IBOutlet weak var startButton: UIButton!
@@ -31,6 +31,7 @@ class BreakItemViewController: UIViewController {
     var secondsPassed = 0
     var defaultTime: Int?
     var breakName: String?
+    var breakArrayIndex: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +43,7 @@ class BreakItemViewController: UIViewController {
             self.secondsPassed = breakTime * 60
             countDownLabel?.text = updateCountdown(secondsPassed)
         }
+        
         navBarTitle.title = breakName
         quoteManager.delegate = self
         quoteManager.getQuote()
@@ -54,10 +56,10 @@ class BreakItemViewController: UIViewController {
     }
     
     override func viewDidLayoutSubviews() {
-            self.view.frame = CGRect(x: 0, y: UIScreen.main.bounds.height / 5 * 1, width: self.view.bounds.width, height: UIScreen.main.bounds.height / 5 * 4)
-            self.view.layer.cornerRadius = 30
-            self.view.layer.masksToBounds = true
-        }
+        self.view.frame = CGRect(x: 0, y: UIScreen.main.bounds.height / 5 * 1, width: self.view.bounds.width, height: UIScreen.main.bounds.height / 5 * 4)
+        self.view.layer.cornerRadius = 30
+        self.view.layer.masksToBounds = true
+    }
     
     @objc func updateTimer() {
         if secondsPassed != 0 {
@@ -111,8 +113,18 @@ class BreakItemViewController: UIViewController {
         }
     }
     
-    @IBAction func deleteBarButtonClicked(_ sender: Any) {
-        present(deleteAlert.showDeleteAlert(breakName!), animated: true, completion: nil)
+    @IBAction func deleteBarButtonClicked(_ sender: UIBarButtonItem) {
+        if let currentArrayIndex = self.breakArrayIndex {
+            let deletePopUp = PopUpController()
+            deletePopUp.countDownDelegate = self.countDownDelegate
+            //TODO: Double check this with Gugs
+            
+            //4 AM Seez here, here we create the deletePopUp like this so we may apply the delegate method to itself
+            //So that when the delete button is clicked in the next present, the delete AND reload table occurs
+            present(deletePopUp.showDeleteAlert(breakName!, currentArrayIndex, viewController: self), animated: true)
+        }
+
+        //TODO: Gugus - Why won't it pop view?
     }
 }
 
@@ -136,7 +148,8 @@ extension BreakItemViewController {
         if segue.identifier == Constants.editButtonSegue {
             let editbreaksViewController = segue.destination as! AddBreakViewController
             //TODO: make this into a guard let
-            
+            editbreaksViewController.countDownDelegate = countDownDelegate
+            editbreaksViewController.breakArrayIndex = breakArrayIndex
             editbreaksViewController.defaultTime = self.defaultTime
             editbreaksViewController.breakName = self.breakName
         }
@@ -176,5 +189,11 @@ extension BreakItemViewController {
         shapeLayer.strokeEnd = 0
         return shapeLayer
     }
-    
+}
+
+extension BreakItemViewController: CloseViewDelegate {
+    func didSelectClose(_ viewController: UIViewController) {
+        print("Did Select Close Method Reached.")
+        self.dismiss(animated: true, completion: nil)
+    }
 }

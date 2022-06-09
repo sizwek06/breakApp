@@ -13,13 +13,13 @@ struct Constants {
     static var showBreakItemSegue = "showBreakItem"
     
     static var addBreakItemSegue: String {
-        "addBreakItem"
+        "addBreakSegue"
     }
     
     static var editButtonSegue: String {
         "editButtonSegue"
     }
-
+    
     static func startButtonTitle(buttonCurrenTitle: String) -> String {
         return buttonCurrenTitle == "START" ? "STOP" : "START"
     }
