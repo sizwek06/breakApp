@@ -12,8 +12,8 @@ class BreaksViewController: UITableViewController  {
     var initialBreakTime: String?
     var timer = Timer()
     
-    var stopTimerDelegate: StopTimerDelegate? = nil
-    var countDownDelegate: CountDownBeganDelegate? = nil
+    var stopTimerDelegate: StopTimerDelegate?
+    var countDownDelegate: CountDownBeganDelegate?
     
     var currentIndexPath = IndexPath()
     
@@ -21,8 +21,7 @@ class BreaksViewController: UITableViewController  {
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.rowHeight = 100
-        tableView.register(UINib(nibName: "BreakItemCell", bundle: nil), forCellReuseIdentifier: BreakItem.identifier)
-        //TODO:Ask Gugs about identifying nib name for costant file
+        tableView.register(UINib(nibName: "BreakItemCell", bundle: nil), forCellReuseIdentifier: BreakItem.cellItemIdKey)
         
         tableView.layer.cornerRadius = 0
         tableView.separatorEffect = .none
@@ -46,7 +45,7 @@ extension BreaksViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let breakItem = breaksArray[indexPath.row]
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: BreakItem.identifier, for: indexPath) as! BreakItemCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: BreakItem.cellItemIdKey, for: indexPath) as! BreakItemCell
         //TODO: make this into a guard let
         cell.breakNameLabel?.text = breakItem.name
         cell.breakDurationLabel?.text = "Time Remaining: \(breakItem.breakLength) min(s)"
@@ -64,7 +63,7 @@ extension BreaksViewController {
     }
 }
 
-//MARK: - Segue with time
+//MARK: - Segue Section
 extension BreaksViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
@@ -92,7 +91,7 @@ extension BreaksViewController {
     }
 }
 
-//MARK: BreakItemViewController - DataEnteredDelegate
+//MARK: BreakItemViewController - CountDownDelegate
 extension BreaksViewController: CountDownBeganDelegate {
     func reloadTable() {
         tableView.reloadData()
@@ -113,6 +112,7 @@ extension BreaksViewController: CountDownBeganDelegate {
     }
 }
 
+//MARK: BreakItemViewController - CloseViewDelegate
 extension BreaksViewController: CloseViewDelegate {
     func didSelectClose(_ viewController: UIViewController) {
         self.dismiss(animated: true)

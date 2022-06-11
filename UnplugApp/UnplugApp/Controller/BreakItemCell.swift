@@ -30,14 +30,18 @@ class BreakItemCell: UITableViewCell {
     }
 }
 
-//mark - UI Nib Details
+//MARK: - UI Nib Details
 extension BreakItem {
     
     static var nib: UINib {
-        return UINib(nibName: identifier, bundle: nil)
+        return UINib(nibName: cellItemIdKey, bundle: nil)
     }
-    
-    static var identifier: String {
+//
+//    static var identifier: String {
+//        return String(describing: self)
+//    }
+
+    static var cellItemIdKey: String {
         return String(describing: self)
     }
 }

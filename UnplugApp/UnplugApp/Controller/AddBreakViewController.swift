@@ -57,22 +57,28 @@ class AddBreakViewController: UIViewController {
     }
     
     @IBAction func topRightButtonClicked(_ sender: UIBarButtonItem) {
-        let infoPopUp = PopUpController()
-        infoPopUp.closeViewDelegate = self
         
         if breakNameTextField.hasText == false {
-            present(infoPopUp.showBreakAddedAlert(nil, nil), animated: true)
+            let infoPopUp = BreakAlertController(with: breakName!, andCondition: .unknown)
+            present(infoPopUp.showBreakAddedAlert(), animated: true)
         }
         else if let newbreakName = breakNameTextField.text {
             if navBarItemOutlet.rightBarButtonItem?.title == "Add" {
+                let infoPopUp = BreakAlertController(with: newbreakName, andCondition: .added)
+                infoPopUp.closeViewDelegate = self
+                
                 breaksArray.append(BreakItem(name: newbreakName, breakLength: breakLength, colour: "black"))
-                present(infoPopUp.showBreakAddedAlert(newbreakName, "Add"), animated: true)
+                present(infoPopUp.showBreakAddedAlert(), animated: true)
             }
             else if navBarItemOutlet.rightBarButtonItem?.title == "Edit" {
                 if let arrayIndex = breakArrayIndex {
+                    let infoPopUp = BreakAlertController(with: newbreakName, andCondition: .edit)
+                    infoPopUp.closeViewDelegate = self
+                    
                     breaksArray[arrayIndex].name = newbreakName
                     breaksArray[arrayIndex].breakLength = breakLength
-                    present(infoPopUp.showBreakAddedAlert(newbreakName, "Edit"), animated: true)
+                    present(infoPopUp.showBreakAddedAlert(), animated: true)
+                    navBarItemOutlet.title = newbreakName
                     reloadViewTitleDelegate?.refreshTitle(newbreakName)
                     reloadViewTitleDelegate?.refreshBreakDuration(Int(breakLength)!)
                 }
@@ -126,7 +132,7 @@ extension AddBreakViewController: UITextFieldDelegate {
     }
 }
 
-
+//MARK: - CloseViewDelegate
 extension AddBreakViewController: CloseViewDelegate {
     func didSelectClose(_ viewController: UIViewController) {
         print("Did Select Close Method Reached for Add Break")

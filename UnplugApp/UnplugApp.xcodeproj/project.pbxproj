@@ -13,7 +13,7 @@
 		288356EC283853E5004898BB /* QuoteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288356EB283853E5004898BB /* QuoteManager.swift */; };
 		288356F0283855B4004898BB /* QuoteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288356EF283855B4004898BB /* QuoteModel.swift */; };
 		288356F728386384004898BB /* QuoteManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288356F628386384004898BB /* QuoteManagerDelegate.swift */; };
-		288356FD28387873004898BB /* PopUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288356FC28387873004898BB /* PopUpController.swift */; };
+		288356FD28387873004898BB /* BreakAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288356FC28387873004898BB /* BreakAlertController.swift */; };
 		288357032839A702004898BB /* CountDownDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288357022839A702004898BB /* CountDownDelegate.swift */; };
 		2883570B2839B5EF004898BB /* AddBreakViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2883570A2839B5EF004898BB /* AddBreakViewController.swift */; };
 		28964403284642120074CBD3 /* BreaksArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28964402284642120074CBD3 /* BreaksArray.swift */; };
@@ -39,7 +39,7 @@
 		288356EB283853E5004898BB /* QuoteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteManager.swift; sourceTree = "<group>"; };
 		288356EF283855B4004898BB /* QuoteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteModel.swift; sourceTree = "<group>"; };
 		288356F628386384004898BB /* QuoteManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteManagerDelegate.swift; sourceTree = "<group>"; };
-		288356FC28387873004898BB /* PopUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpController.swift; sourceTree = "<group>"; };
+		288356FC28387873004898BB /* BreakAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreakAlertController.swift; sourceTree = "<group>"; };
 		288357022839A702004898BB /* CountDownDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountDownDelegate.swift; sourceTree = "<group>"; };
 		2883570A2839B5EF004898BB /* AddBreakViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBreakViewController.swift; sourceTree = "<group>"; };
 		28964402284642120074CBD3 /* BreaksArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreaksArray.swift; sourceTree = "<group>"; };
@@ -152,7 +152,7 @@
 				28A1B97928347AB100057130 /* BreaksViewController.swift */,
 				287CEE7D2836EA050015E90F /* BreakItemCell.swift */,
 				28A1B9642834776C00057130 /* BreakItemViewController.swift */,
-				288356FC28387873004898BB /* PopUpController.swift */,
+				288356FC28387873004898BB /* BreakAlertController.swift */,
 				2883570A2839B5EF004898BB /* AddBreakViewController.swift */,
 			);
 			path = Controller;
@@ -232,7 +232,7 @@
 				28964403284642120074CBD3 /* BreaksArray.swift in Sources */,
 				288356F0283855B4004898BB /* QuoteModel.swift in Sources */,
 				288356F728386384004898BB /* QuoteManagerDelegate.swift in Sources */,
-				288356FD28387873004898BB /* PopUpController.swift in Sources */,
+				288356FD28387873004898BB /* BreakAlertController.swift in Sources */,
 				288357032839A702004898BB /* CountDownDelegate.swift in Sources */,
 				28A1B97A28347AB100057130 /* BreaksViewController.swift in Sources */,
 				28A1B9652834776C00057130 /* BreakItemViewController.swift in Sources */,

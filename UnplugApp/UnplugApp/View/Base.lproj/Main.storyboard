@@ -4,7 +4,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
-        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -24,7 +23,7 @@
                         <color key="sectionIndexBackgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="sectionIndexTrackingBackgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="breakItemCellId" textLabel="jNH-2X-5yo" rowHeight="100" style="IBUITableViewCellStyleDefault" translatesAutoresizingMaskIntoConstraints="NO" id="Sf1-de-13E">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="breakItemCellId" textLabel="jNH-2X-5yo" rowHeight="100" style="IBUITableViewCellStyleDefault" translatesAutoresizingMaskIntoConstraints="NO" id="Sf1-de-13E">
                                 <rect key="frame" x="0.0" y="44.5" width="414" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Sf1-de-13E" id="QMz-Y0-ou9">
@@ -52,14 +51,13 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Unplug" id="gn7-Lg-1rR">
-                        <barButtonItem key="leftBarButtonItem" id="5yY-fh-RoO">
-                            <imageReference key="image" image="clock.arrow.circlepath" catalog="system" symbolScale="large"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="refresh" id="5yY-fh-RoO">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="refreshClicked:" destination="MtZ-Zm-Vnk" id="4BJ-WU-yzP"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="PTh-Ww-cLZ">
+                        <barButtonItem key="rightBarButtonItem" title="Add" id="PTh-Ww-cLZ">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <segue destination="dnh-ez-8Ze" kind="presentation" identifier="addBreakSegue" id="nN0-74-9Pk"/>
@@ -101,17 +99,15 @@
                                         </textAttributes>
                                         <items>
                                             <navigationItem title="Unplug" id="ROZ-5w-pu3">
-                                                <barButtonItem key="leftBarButtonItem" title="Delete" width="80" id="Y3q-bo-B00">
-                                                    <imageReference key="image" image="trash" catalog="system" renderingMode="original"/>
-                                                    <color key="tintColor" systemColor="linkColor"/>
+                                                <barButtonItem key="leftBarButtonItem" systemItem="trash" id="Y3q-bo-B00">
+                                                    <color key="tintColor" systemColor="systemRedColor"/>
                                                     <connections>
                                                         <action selector="deleteBarButtonClicked:" destination="R0z-vl-g7F" id="t87-yU-EqO"/>
                                                     </connections>
                                                 </barButtonItem>
-                                                <barButtonItem key="rightBarButtonItem" title="Edit" largeContentSizeImage="pencil.tip" catalog="system" width="80" id="Otb-aR-PrJ">
-                                                    <imageReference key="image" image="pencil.tip.crop.circle" catalog="system" symbolScale="large" renderingMode="original"/>
+                                                <barButtonItem key="rightBarButtonItem" largeContentSizeImage="pencil.tip" catalog="system" systemItem="edit" id="Otb-aR-PrJ">
                                                     <inset key="imageInsets" minX="0.0" minY="50" maxX="0.0" maxY="50"/>
-                                                    <color key="tintColor" systemColor="linkColor"/>
+                                                    <color key="tintColor" systemColor="labelColor"/>
                                                     <connections>
                                                         <action selector="editButtonClicked:" destination="R0z-vl-g7F" id="dkb-P7-IO3"/>
                                                         <segue destination="dnh-ez-8Ze" kind="presentation" identifier="editButtonSegue" id="SuK-8G-Tmn"/>
@@ -311,24 +307,21 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="nN0-74-9Pk"/>
+        <segue reference="SuK-8G-Tmn"/>
     </inferredMetricsTieBreakers>
     <resources>
-        <image name="clock.arrow.circlepath" catalog="system" width="128" height="110"/>
         <image name="pencil.tip" catalog="system" width="99" height="128"/>
-        <image name="pencil.tip.crop.circle" catalog="system" width="128" height="121"/>
-        <image name="trash" catalog="system" width="121" height="128"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
-        <systemColor name="linkColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
