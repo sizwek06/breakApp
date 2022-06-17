@@ -5,6 +5,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -21,29 +22,40 @@
                         <rect key="frame" x="8" y="7" width="399" height="90"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lunch Break" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G57-Lk-BuH">
-                                <rect key="frame" x="14" y="36" width="142.5" height="18"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="142.5" id="AjR-6E-pH9"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <nil key="textColor"/>
-                                <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1go-Oy-SCo">
-                                <rect key="frame" x="236.5" y="45" width="154.5" height="0.0"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <nil key="textColor"/>
+                                <rect key="frame" x="24" y="51" width="138" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="15" id="6Uw-FI-LuO"/>
+                                    <constraint firstAttribute="width" constant="138" id="Ypa-se-3p9"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="highlightedColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </label>
+                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="19v-id-Zei">
+                                <rect key="frame" x="275" y="8" width="110" height="68"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lunch Break" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G57-Lk-BuH">
+                                <rect key="frame" x="24" y="19" width="238" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="238" id="DpB-Id-Rke"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.5490196078431373" green="0.75294117647058822" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="1go-Oy-SCo" firstAttribute="leading" secondItem="G57-Lk-BuH" secondAttribute="trailing" constant="80" id="OAq-Sd-jeT"/>
-                            <constraint firstItem="G57-Lk-BuH" firstAttribute="centerY" secondItem="B48-nC-hNU" secondAttribute="centerY" id="Rxz-xb-RGO"/>
-                            <constraint firstItem="1go-Oy-SCo" firstAttribute="centerY" secondItem="B48-nC-hNU" secondAttribute="centerY" id="nd4-Y3-WT7"/>
-                            <constraint firstItem="1go-Oy-SCo" firstAttribute="trailing" secondItem="B48-nC-hNU" secondAttribute="trailingMargin" id="rcP-tv-ZWE"/>
-                            <constraint firstItem="G57-Lk-BuH" firstAttribute="leading" secondItem="B48-nC-hNU" secondAttribute="leadingMargin" constant="6" id="zpA-FC-pKf"/>
+                            <constraint firstItem="19v-id-Zei" firstAttribute="top" secondItem="B48-nC-hNU" secondAttribute="top" constant="8" id="Ahf-gz-cqN"/>
+                            <constraint firstItem="19v-id-Zei" firstAttribute="leading" secondItem="G57-Lk-BuH" secondAttribute="trailing" constant="13" id="GL6-1O-KbW"/>
+                            <constraint firstItem="G57-Lk-BuH" firstAttribute="leading" secondItem="B48-nC-hNU" secondAttribute="leadingMargin" constant="16" id="GfY-Vv-7v9"/>
+                            <constraint firstAttribute="bottom" secondItem="19v-id-Zei" secondAttribute="bottom" constant="14" id="POC-tf-teb"/>
+                            <constraint firstAttribute="trailing" secondItem="19v-id-Zei" secondAttribute="trailing" constant="14" id="Vvq-Wc-ZGF"/>
+                            <constraint firstItem="G57-Lk-BuH" firstAttribute="top" secondItem="B48-nC-hNU" secondAttribute="top" constant="19" id="d8o-Gp-J9D"/>
+                            <constraint firstItem="1go-Oy-SCo" firstAttribute="top" secondItem="G57-Lk-BuH" secondAttribute="bottom" constant="8" id="htw-e9-8OK"/>
+                            <constraint firstItem="G57-Lk-BuH" firstAttribute="leading" secondItem="1go-Oy-SCo" secondAttribute="leading" id="ttN-Au-J6a"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -59,8 +71,14 @@
                 <outlet property="breakDurationLabel" destination="1go-Oy-SCo" id="dFq-nZ-vqS"/>
                 <outlet property="breakNameLabel" destination="G57-Lk-BuH" id="FvA-uI-TDe"/>
                 <outlet property="cellView" destination="B48-nC-hNU" id="jBc-ts-Uz2"/>
+                <outlet property="countDownView" destination="19v-id-Zei" id="oG2-ga-lnv"/>
             </connections>
-            <point key="canvasLocation" x="-790.57971014492762" y="-3.683035714285714"/>
+            <point key="canvasLocation" x="-792.1875" y="-3.6971830985915495"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

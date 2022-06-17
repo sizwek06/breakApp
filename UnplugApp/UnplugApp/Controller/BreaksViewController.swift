@@ -8,13 +8,14 @@ import UIKit
 
 class BreaksViewController: UITableViewController  {
     
-    var currentCount: String?
-    var initialBreakTime: String?
+    var currentCount: Int?
+    var initialBreakTime: Int?
     var timer = Timer()
+    var timeLeft = 0
     
     var stopTimerDelegate: StopTimerDelegate?
     var countDownDelegate: CountDownBeganDelegate?
-    
+    var shapeLayer: CAShapeLayer!
     var currentIndexPath = IndexPath()
     
     override func viewDidLoad() {
@@ -44,13 +45,17 @@ extension BreaksViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let breakItem = breaksArray[indexPath.row]
+        timeLeft = breakItem.breakLength * 60
         
         let cell = tableView.dequeueReusableCell(withIdentifier: BreakItem.cellItemIdKey, for: indexPath) as! BreakItemCell
+        
         //TODO: make this into a guard let
         cell.breakNameLabel?.text = breakItem.name
-        cell.breakDurationLabel?.text = "Time Remaining: \(breakItem.breakLength) min(s)"
-        //TODO: Need to figure out how this will be stored and returned. Time convertion class?
+        cell.breakDurationLabel?.text = updateCountdown(timeLeft)
+        cell.countDownView.layer.addSublayer(setupCircleLayers(withView: cell))
         
+        //TODO: Need to figure out how this will be stored and returned. Time convertion class?
+        //countdownView.layer.addSublayer(setupCircleLayers())
         cell.selectionStyle = .none
         cell.configureCell(with: indexPath)
         return cell
@@ -60,6 +65,10 @@ extension BreaksViewController {
         performSegue(withIdentifier: Constants.showBreakItemSegue, sender: self)
         currentIndexPath = indexPath
         self.initialBreakTime = breaksArray[indexPath.row].breakLength
+    }
+    
+    func updateCountdown(_ timeLeft: Int) -> String {
+        return String(format: "%02d:%02d:%02d", 0, timeLeft / 60, timeLeft % 60)
     }
 }
 
@@ -101,11 +110,11 @@ extension BreaksViewController: CountDownBeganDelegate {
         breaksArray[currentIndexPath.row].breakLength = self.initialBreakTime!
     }
     
-    func countDownStarted(count: String, timer: Timer) {
-        self.currentCount = count
+    func countDownStarted(count: String, countInt: Int, timer: Timer) {
+        self.currentCount = countInt
         //TODO: Update the cell's look to indicate active?
         
-        breaksArray[currentIndexPath.row].breakLength = count
+        breaksArray[currentIndexPath.row].breakLength = countInt / 60
         
         //TODO: highlight the current cell?
         tableView.reloadData()
@@ -116,5 +125,33 @@ extension BreaksViewController: CountDownBeganDelegate {
 extension BreaksViewController: CloseViewDelegate {
     func didSelectClose(_ viewController: UIViewController) {
         self.dismiss(animated: true)
+    }
+}
+
+//MARK: - Progress Bar
+extension BreaksViewController {
+    
+    private func createCircleShapeLayer(strokeColor: UIColor, fillColor: UIColor, withView: UIView) -> CAShapeLayer {
+        let layer = CAShapeLayer()
+        let circularPath = UIBezierPath(arcCenter: .zero,
+                                        radius: 30,
+                                        startAngle: 0 * CGFloat.pi, endAngle: 2.25 * CGFloat.pi, clockwise: true)
+        layer.path = circularPath.cgPath
+        layer.strokeColor = strokeColor.cgColor
+        layer.lineWidth = 7
+        layer.fillColor = fillColor.cgColor
+        layer.lineCap = CAShapeLayerLineCap.round
+        layer.position = CGPoint(x: 325, y: 50)
+        return layer
+    }
+    
+    private func setupCircleLayers(withView: UIView) -> CALayer {
+        let trackLayer = createCircleShapeLayer(strokeColor: .orange, fillColor: Constants.backgroundColor, withView: withView)
+        withView.layer.addSublayer(trackLayer)
+         
+        shapeLayer = createCircleShapeLayer(strokeColor: Constants.outlineStrokeColor, fillColor: Constants.trackStrokeColor, withView: withView)
+        shapeLayer.transform = CATransform3DMakeRotation(0 / 2, 0, 0, 1)
+        shapeLayer.strokeEnd = 50
+        return shapeLayer
     }
 }

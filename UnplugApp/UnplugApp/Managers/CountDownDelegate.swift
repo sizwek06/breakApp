@@ -8,7 +8,7 @@
 import Foundation
 
 protocol CountDownBeganDelegate: AnyObject {
-    func countDownStarted(count: String, timer: Timer)
+    func countDownStarted(count: String, countInt: Int, timer: Timer)
     
     func resetTimeValue()
     

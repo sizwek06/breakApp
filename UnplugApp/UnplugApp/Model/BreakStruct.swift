@@ -9,6 +9,6 @@ import Foundation
 
 struct BreakItem {
     var name: String
-    var breakLength: String
+    var breakLength: Int
     var colour: String
 }
