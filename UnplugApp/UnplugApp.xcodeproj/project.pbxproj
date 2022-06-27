@@ -35,6 +35,7 @@
 /* Begin PBXFileReference section */
 		283B4F292844E351008F4AF1 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		287CEE7D2836EA050015E90F /* BreakItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreakItemCell.swift; sourceTree = "<group>"; };
+		288048DB285D497C006F1FFB /* UnplugApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = UnplugApp.entitlements; sourceTree = "<group>"; };
 		288356E828385335004898BB /* QuoteData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteData.swift; sourceTree = "<group>"; };
 		288356EB283853E5004898BB /* QuoteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteManager.swift; sourceTree = "<group>"; };
 		288356EF283855B4004898BB /* QuoteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteModel.swift; sourceTree = "<group>"; };
@@ -111,6 +112,7 @@
 		28A1B95F2834776C00057130 /* UnplugApp */ = {
 			isa = PBXGroup;
 			children = (
+				288048DB285D497C006F1FFB /* UnplugApp.entitlements */,
 				283B4F282844E344008F4AF1 /* New Group */,
 				288356F528386363004898BB /* Managers */,
 				28A1B98128348ABD00057130 /* Controller */,
@@ -394,8 +396,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = UnplugApp/UnplugApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4W3WWQNA54;
+				DEVELOPMENT_TEAM = U7HFT6QF4H;
 				INFOPLIST_FILE = UnplugApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -413,8 +416,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = UnplugApp/UnplugApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4W3WWQNA54;
+				DEVELOPMENT_TEAM = U7HFT6QF4H;
 				INFOPLIST_FILE = UnplugApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
