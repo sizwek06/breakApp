@@ -16,6 +16,7 @@ class BreakItemViewController: UIViewController {
     var pulsatingLayer: CAShapeLayer!
     var quoteManager = QuoteManager()
     var countDownDelegate: CountDownBeganDelegate?
+    var closeViewDelegate: CloseViewDelegate?
     
     @IBOutlet weak var countdownView: UIView!
     
@@ -52,9 +53,6 @@ class BreakItemViewController: UIViewController {
         quoteLoadingActivityIndicator.color = Constants.outlineStrokeColor
     }
     
-    @IBAction func editButtonClicked(_ sender: Any) {
-    }
-    
     override func viewDidLayoutSubviews() {
         self.view.frame = CGRect(x: 0, y: UIScreen.main.bounds.height / 5 * 1, width: self.view.bounds.width, height: UIScreen.main.bounds.height / 5 * 4)
         self.view.layer.cornerRadius = 30
@@ -78,8 +76,14 @@ class BreakItemViewController: UIViewController {
             timer.invalidate()
             updateButton("START")
             //TODO: Add a message once the break is over
+            let breakOverPopUp = BreakAlertController(with: breakName!, andCondition: .complete)
+            breakOverPopUp.closeViewDelegate = self
+            //TODO: This the part Gugs dropped the omission bomb on you
             
+            present(breakOverPopUp.showBreakAddedAlert(), animated: true)
+            quoteManager.getQuote()
             countDownDelegate?.resetTimeValue()
+            self.shapeLayer.strokeEnd = 0
         }
     }
     
@@ -103,6 +107,7 @@ class BreakItemViewController: UIViewController {
                 timer.invalidate()
                 countDownDelegate?.countDownStarted(count: "\(defaultTime!) min(s)", timer: self.timer)
                 countDownDelegate?.resetTimeValue()
+                self.shapeLayer.strokeEnd = 0
             } else if buttonTitle == "START" {
                 DispatchQueue.main.async {
                     self.timer.invalidate()
@@ -115,16 +120,14 @@ class BreakItemViewController: UIViewController {
     
     @IBAction func deleteBarButtonClicked(_ sender: UIBarButtonItem) {
         if let currentArrayIndex = self.breakArrayIndex {
-            let deletePopUp = PopUpController()
-            deletePopUp.countDownDelegate = self.countDownDelegate
-            //TODO: Double check this with Gugs
+            let deletePopUp = BreakAlertController(with: breakName!)
+            deletePopUp.countDownDelegate = countDownDelegate
+            deletePopUp.closeViewDelegate = closeViewDelegate
             
             //4 AM Seez here, here we create the deletePopUp like this so we may apply the delegate method to itself
             //So that when the delete button is clicked in the next present, the delete AND reload table occurs
-            present(deletePopUp.showDeleteAlert(breakName!, currentArrayIndex, viewController: self), animated: true)
+            present(deletePopUp.showDeleteAlertWithCurrentArrayIndex(currentArrayIndex), animated: true)
         }
-
-        //TODO: Gugus - Why won't it pop view?
     }
 }
 
@@ -146,8 +149,10 @@ extension BreakItemViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == Constants.editButtonSegue {
-            let editbreaksViewController = segue.destination as! AddBreakViewController
-            //TODO: make this into a guard let
+            guard let editbreaksViewController = segue.destination as? AddBreakViewController else { return }
+            
+            editbreaksViewController.reloadViewTitleDelegate = self
+            
             editbreaksViewController.countDownDelegate = countDownDelegate
             editbreaksViewController.breakArrayIndex = breakArrayIndex
             editbreaksViewController.defaultTime = self.defaultTime
@@ -167,7 +172,9 @@ extension BreakItemViewController {
     
     private func createCircleShapeLayer(strokeColor: UIColor, fillColor: UIColor) -> CAShapeLayer {
         let layer = CAShapeLayer()
-        let circularPath = UIBezierPath(arcCenter: .zero, radius: 120, startAngle: 0.75 * CGFloat.pi, endAngle: 2.25 * CGFloat.pi, clockwise: true)
+        let circularPath = UIBezierPath(arcCenter: .zero,
+                                        radius: 120,
+                                        startAngle: 0.75 * CGFloat.pi, endAngle: 2.25 * CGFloat.pi, clockwise: true)
         layer.path = circularPath.cgPath
         layer.strokeColor = strokeColor.cgColor
         layer.lineWidth = 30
@@ -193,7 +200,16 @@ extension BreakItemViewController {
 
 extension BreakItemViewController: CloseViewDelegate {
     func didSelectClose(_ viewController: UIViewController) {
-        print("Did Select Close Method Reached.")
         self.dismiss(animated: true, completion: nil)
+    }
+}
+
+extension BreakItemViewController: ReloadBreakDetailsDelegate {
+    func refreshBreakDuration(_ breakDuration: Int) {
+        countDownLabel?.text = updateCountdown(breakDuration * 60)
+    }
+    
+    func refreshTitle(_ viewTitle: String) {
+        navBarTitle.title = viewTitle
     }
 }

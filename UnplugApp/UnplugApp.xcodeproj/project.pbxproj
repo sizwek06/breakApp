@@ -13,7 +13,7 @@
 		288356EC283853E5004898BB /* QuoteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288356EB283853E5004898BB /* QuoteManager.swift */; };
 		288356F0283855B4004898BB /* QuoteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288356EF283855B4004898BB /* QuoteModel.swift */; };
 		288356F728386384004898BB /* QuoteManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288356F628386384004898BB /* QuoteManagerDelegate.swift */; };
-		288356FD28387873004898BB /* PopUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288356FC28387873004898BB /* PopUpController.swift */; };
+		288356FD28387873004898BB /* BreakAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288356FC28387873004898BB /* BreakAlertController.swift */; };
 		288357032839A702004898BB /* CountDownDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288357022839A702004898BB /* CountDownDelegate.swift */; };
 		2883570B2839B5EF004898BB /* AddBreakViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2883570A2839B5EF004898BB /* AddBreakViewController.swift */; };
 		28964403284642120074CBD3 /* BreaksArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28964402284642120074CBD3 /* BreaksArray.swift */; };
@@ -29,16 +29,18 @@
 		28B720E8284835F7005D3D9F /* CloseViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B720E7284835F7005D3D9F /* CloseViewDelegate.swift */; };
 		28D96F8A283C72D500BF4D64 /* StopTimerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D96F89283C72D500BF4D64 /* StopTimerDelegate.swift */; };
 		28EB51492837245B00059F79 /* BreakItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28EB5142283722F900059F79 /* BreakItemCell.xib */; };
+		28EEDAB9285183840016B19E /* ReloadBreakDetailsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EEDAB8285183840016B19E /* ReloadBreakDetailsDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		283B4F292844E351008F4AF1 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		287CEE7D2836EA050015E90F /* BreakItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreakItemCell.swift; sourceTree = "<group>"; };
+		288048DB285D497C006F1FFB /* UnplugApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = UnplugApp.entitlements; sourceTree = "<group>"; };
 		288356E828385335004898BB /* QuoteData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteData.swift; sourceTree = "<group>"; };
 		288356EB283853E5004898BB /* QuoteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteManager.swift; sourceTree = "<group>"; };
 		288356EF283855B4004898BB /* QuoteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteModel.swift; sourceTree = "<group>"; };
 		288356F628386384004898BB /* QuoteManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteManagerDelegate.swift; sourceTree = "<group>"; };
-		288356FC28387873004898BB /* PopUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpController.swift; sourceTree = "<group>"; };
+		288356FC28387873004898BB /* BreakAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreakAlertController.swift; sourceTree = "<group>"; };
 		288357022839A702004898BB /* CountDownDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountDownDelegate.swift; sourceTree = "<group>"; };
 		2883570A2839B5EF004898BB /* AddBreakViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBreakViewController.swift; sourceTree = "<group>"; };
 		28964402284642120074CBD3 /* BreaksArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreaksArray.swift; sourceTree = "<group>"; };
@@ -56,6 +58,7 @@
 		28B720E7284835F7005D3D9F /* CloseViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseViewDelegate.swift; sourceTree = "<group>"; };
 		28D96F89283C72D500BF4D64 /* StopTimerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopTimerDelegate.swift; sourceTree = "<group>"; };
 		28EB5142283722F900059F79 /* BreakItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BreakItemCell.xib; sourceTree = "<group>"; };
+		28EEDAB8285183840016B19E /* ReloadBreakDetailsDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReloadBreakDetailsDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +88,7 @@
 				288357022839A702004898BB /* CountDownDelegate.swift */,
 				28D96F89283C72D500BF4D64 /* StopTimerDelegate.swift */,
 				28B720E7284835F7005D3D9F /* CloseViewDelegate.swift */,
+				28EEDAB8285183840016B19E /* ReloadBreakDetailsDelegate.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -108,6 +112,7 @@
 		28A1B95F2834776C00057130 /* UnplugApp */ = {
 			isa = PBXGroup;
 			children = (
+				288048DB285D497C006F1FFB /* UnplugApp.entitlements */,
 				283B4F282844E344008F4AF1 /* New Group */,
 				288356F528386363004898BB /* Managers */,
 				28A1B98128348ABD00057130 /* Controller */,
@@ -149,7 +154,7 @@
 				28A1B97928347AB100057130 /* BreaksViewController.swift */,
 				287CEE7D2836EA050015E90F /* BreakItemCell.swift */,
 				28A1B9642834776C00057130 /* BreakItemViewController.swift */,
-				288356FC28387873004898BB /* PopUpController.swift */,
+				288356FC28387873004898BB /* BreakAlertController.swift */,
 				2883570A2839B5EF004898BB /* AddBreakViewController.swift */,
 			);
 			path = Controller;
@@ -229,7 +234,7 @@
 				28964403284642120074CBD3 /* BreaksArray.swift in Sources */,
 				288356F0283855B4004898BB /* QuoteModel.swift in Sources */,
 				288356F728386384004898BB /* QuoteManagerDelegate.swift in Sources */,
-				288356FD28387873004898BB /* PopUpController.swift in Sources */,
+				288356FD28387873004898BB /* BreakAlertController.swift in Sources */,
 				288357032839A702004898BB /* CountDownDelegate.swift in Sources */,
 				28A1B97A28347AB100057130 /* BreaksViewController.swift in Sources */,
 				28A1B9652834776C00057130 /* BreakItemViewController.swift in Sources */,
@@ -242,6 +247,7 @@
 				288356E928385335004898BB /* QuoteData.swift in Sources */,
 				28A1B9612834776C00057130 /* AppDelegate.swift in Sources */,
 				28A1B96B2834776C00057130 /* UnplugApp.xcdatamodeld in Sources */,
+				28EEDAB9285183840016B19E /* ReloadBreakDetailsDelegate.swift in Sources */,
 				2883570B2839B5EF004898BB /* AddBreakViewController.swift in Sources */,
 				28A1B9632834776C00057130 /* SceneDelegate.swift in Sources */,
 			);
@@ -390,8 +396,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = UnplugApp/UnplugApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4W3WWQNA54;
+				DEVELOPMENT_TEAM = U7HFT6QF4H;
 				INFOPLIST_FILE = UnplugApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -409,8 +416,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = UnplugApp/UnplugApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4W3WWQNA54;
+				DEVELOPMENT_TEAM = U7HFT6QF4H;
 				INFOPLIST_FILE = UnplugApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
