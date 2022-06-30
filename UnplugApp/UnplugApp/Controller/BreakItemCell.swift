@@ -13,6 +13,8 @@ class BreakItemCell: UITableViewCell {
     @IBOutlet weak var breakNameLabel: UILabel!
     @IBOutlet weak var breakDurationLabel: UILabel!
     
+    @IBOutlet weak var countDownView: UIView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -45,4 +47,3 @@ extension BreakItem {
         return String(describing: self)
     }
 }
-

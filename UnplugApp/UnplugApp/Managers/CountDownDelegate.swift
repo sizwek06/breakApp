@@ -6,11 +6,14 @@
 //
 
 import Foundation
+import UIKit
 
 protocol CountDownBeganDelegate: AnyObject {
-    func countDownStarted(count: String, timer: Timer)
+    func countDownStarted(count: String, countInt: Int, timer: Timer)
     
     func resetTimeValue()
     
     func reloadTable()
+    
+    func updateCellProgressBar(countInt: CGFloat, totalTime: CGFloat)
 }

@@ -62,8 +62,11 @@ class BreakItemViewController: UIViewController {
     @objc func updateTimer() {
         if secondsPassed != 0 {
             secondsPassed -= 1
-            countDownLabel?.text = updateCountdown(secondsPassed)
-            countDownDelegate?.countDownStarted(count: updateCountdown(secondsPassed), timer: self.timer)
+            print(secondsPassed)
+            let currentTime = updateCountdown(secondsPassed)
+            
+            countDownLabel?.text = currentTime
+            countDownDelegate?.countDownStarted(count: currentTime, countInt: secondsPassed, timer: self.timer)
             
             let aHundredPercent = CGFloat(self.defaultTime! * 60)
             let currentPercent = CGFloat(((self.defaultTime! * 60) - self.secondsPassed))
@@ -71,6 +74,7 @@ class BreakItemViewController: UIViewController {
             
             DispatchQueue.main.async {
                 self.shapeLayer.strokeEnd = strokePointPercent
+                self.countDownDelegate?.updateCellProgressBar(countInt: currentPercent, totalTime: aHundredPercent)
             }
         } else {
             timer.invalidate()
@@ -87,8 +91,10 @@ class BreakItemViewController: UIViewController {
         }
     }
     
-    func updateCountdown(_ timeLeft: Int) -> String{
+    func updateCountdown(_ timeLeft: Int) -> String {
+        print(String(format: "%02d:%02d:%02d", 0, timeLeft / 60, timeLeft % 60))
         return String(format: "%02d:%02d:%02d", 0, timeLeft / 60, timeLeft % 60)
+        
     }
     
     func updateButton(_ currentTitle: String) {
@@ -105,7 +111,7 @@ class BreakItemViewController: UIViewController {
         if let buttonTitle = sender.title(for: .normal) {
             if buttonTitle == "STOP" {
                 timer.invalidate()
-                countDownDelegate?.countDownStarted(count: "\(defaultTime!) min(s)", timer: self.timer)
+                countDownDelegate?.countDownStarted(count: "\(defaultTime!) min(s)", countInt: defaultTime!, timer: self.timer)
                 countDownDelegate?.resetTimeValue()
                 self.shapeLayer.strokeEnd = 0
             } else if buttonTitle == "START" {

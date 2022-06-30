@@ -19,7 +19,7 @@ class AddBreakViewController: UIViewController {
     
     var defaultTime: Int?
     var breakName: String?
-    var breakLength = "5"
+    var breakLength = 5
     var breakArrayIndex: Int?
     
     override func viewDidLoad() {
@@ -42,17 +42,17 @@ class AddBreakViewController: UIViewController {
     @IBAction func durationSegmentClicked(_ sender: UIControl) {
         switch minsSegmentOutlet.selectedSegmentIndex {
         case 0:
-            breakLength = "5"
+            breakLength = 5
         case 1:
-            breakLength = "10"
+            breakLength = 10
         case 2:
-            breakLength = "15"
+            breakLength = 15
         case 3:
-            breakLength = "30"
+            breakLength = 30
         case 4:
-            breakLength = "60"
+            breakLength = 60
         default:
-            breakLength = "5"
+            breakLength = 5
         }
     }
     
@@ -80,7 +80,7 @@ class AddBreakViewController: UIViewController {
                     present(infoPopUp.showBreakAddedAlert(), animated: true)
                     navBarItemOutlet.title = newbreakName
                     reloadViewTitleDelegate?.refreshTitle(newbreakName)
-                    reloadViewTitleDelegate?.refreshBreakDuration(Int(breakLength)!)
+                    reloadViewTitleDelegate?.refreshBreakDuration(breakLength)
                 }
             }
         }
