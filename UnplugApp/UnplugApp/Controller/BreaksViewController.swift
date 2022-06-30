@@ -102,6 +102,7 @@ extension BreaksViewController {
 
 //MARK: BreakItemViewController - CountDownDelegate
 extension BreaksViewController: CountDownBeganDelegate {
+    
     func reloadTable() {
         tableView.reloadData()
     }
@@ -118,6 +119,10 @@ extension BreaksViewController: CountDownBeganDelegate {
         
         //TODO: highlight the current cell?
         tableView.reloadData()
+    }
+    
+    func updateCellProgressBar(countInt: CGFloat, totalTime: CGFloat) {
+        
     }
 }
 

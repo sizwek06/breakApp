@@ -74,6 +74,7 @@ class BreakItemViewController: UIViewController {
             
             DispatchQueue.main.async {
                 self.shapeLayer.strokeEnd = strokePointPercent
+                self.countDownDelegate?.updateCellProgressBar(countInt: currentPercent, totalTime: aHundredPercent)
             }
         } else {
             timer.invalidate()
