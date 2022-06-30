@@ -8,9 +8,9 @@
 import Foundation
 
 var breaksArray: [BreakItem] = [
-    BreakItem(name: "Lunch", breakLength: "60", colour: "black"),
-    BreakItem(name: "Shop", breakLength: "35", colour: "black"),
-    BreakItem(name: "Coffee", breakLength: "5", colour: "black"),
-    BreakItem(name: "School Run", breakLength: "45", colour: "black"),
-    BreakItem(name: "Run", breakLength: "1", colour: "black")
+    BreakItem(name: "Lunch", breakLength: 60, colour: "black"),
+    BreakItem(name: "Shop", breakLength: 35, colour: "black"),
+    BreakItem(name: "Coffee", breakLength: 5, colour: "black"),
+    BreakItem(name: "School Run", breakLength: 45, colour: "black"),
+    BreakItem(name: "Run", breakLength: 1, colour: "black")
 ]
